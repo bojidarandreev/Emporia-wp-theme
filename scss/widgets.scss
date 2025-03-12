@@ -1,0 +1,46 @@
+@use "colors.scss";
+/*Header Page Widget*/
+.header-page-widget {
+  color: colors.$font-color-4;
+
+  &-title {
+    font-size: 1.55rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  &-subtitle {
+    font-weight: 400;
+    font-size: 4.5rem;
+    line-height: 1.1;
+  }
+  &-description {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.1rem;
+  }
+  &-button {
+    > * {
+      color: colors.$font-color-4;
+      border-radius: 50px;
+      margin: 30px 40px 0.6rem 0;
+      padding: 15px 30px;
+      a {
+        color: colors.$font-color-4;
+        line-height: 1.6;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+      }
+    }
+    &-a {
+      background-color: colors.$font-color-3;
+    }
+    &-b {
+      background-color: colors.$font-color-2;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+@use "../scss/fonts.scss";
+@use "colors.scss";
+
+//PAGE LAYOUT
+
+.featured-image-active .featured-image {
+  &.page-header-image,
+  &.page-header-image-single {
+    max-width: 100%;
+    height: 781px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0;
+    img {
+      //max-width: 270vw;
+      min-width: 100vw;
+      height: auto;
+      min-height: 781px;
+    }
+  }
+}
+
+//HOME PAGE LAYOUT
+.header-special-buttons-display-none {
+  display: none !important;
+}
+.header-special-services-buttons-widget {
+  //width: 100%;
+}
+.home-header-special-buttons-block.wp-block-columns,
+.block-special-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  .single-button {
+    &-container {
+      h4,
+      a,
+      p {
+        text-align: center;
+      }
+      border: 1px solid colors.$font-color-1;
+      border-radius: 2rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      display: flex;
+      justify-content: center;
+      background-color: colors.$font-color-4;
+      h4 {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.2;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 0.95rem;
+        font-weight: 400;
+      }
+    }
+    //
+  }
+
+  .single-button {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+  .wp-block {
+    &-column {
+    }
+    &-buttons {
+      border: 1px solid colors.$font-color-1;
+      border-radius: 2rem;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    &-button {
+      &:first-child {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 1.1rem;
+        line-height: 1.2;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        a {
+          display: flex;
+          flex-direction: column;
+        }
+        a:before {
+          content: "\e901";
+          font-family: "Icomoon";
+          font-size: 19.55rem;
+          line-height: 1.5;
+          font-weight: 300;
+          color: colors.$font-color-2;
+          position: relative;
+        }
+      }
+      &:last-child {
+        font-size: 0.95rem;
+        font-weight: 400;
+      }
+      &__link {
+        color: colors.$font-color-1;
+        background-color: colors.$opacity-color-0;
+      }
+    }
+  }
+}

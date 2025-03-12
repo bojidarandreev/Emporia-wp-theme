@@ -1,0 +1,18 @@
+@use "../scss/normalizer2.scss";
+@use "../scss/fonts.scss";
+@use "colors.scss";
+@use "../scss/header.scss";
+@use "../scss/page.scss";
+@use "../scss/widgets.scss";
+@use "../scss/mail-form.scss";
+
+.site.container {
+  max-width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  //   background-color: white;
+}
+
+.featured-image {
+  z-index: -1;
+}

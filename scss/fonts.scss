@@ -1,0 +1,242 @@
+@use "colors.scss";
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 300;
+  src: url("../../assets/fonts/Ubuntu-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  src: url("../../assets/fonts/Ubuntu-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 600;
+  src: url("../../assets/fonts/Ubuntu-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 800;
+  src: url("../../assets/fonts/Ubuntu-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 200;
+  src: url("../../assets/fonts/Roboto-Thin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 300;
+  src: url("../../assets/fonts/Roboto-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  src: url("../../assets/fonts/Roboto-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url("../../assets/fonts/Roboto-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 600;
+  src: url("../../assets/fonts/Roboto-Condensed.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  src: url("../../assets/fonts/Roboto-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 800;
+  src: url("../../assets/fonts/Roboto-BoldCondensed.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 900;
+  src: url("../../assets/fonts/Roboto-BoldCondensed.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Icomoon";
+  font-weight: 300;
+  src: url("../../assets/fonts/icomoon.woff") format("woff");
+}
+
+/*TITLES-start*/
+body {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Ubuntu, sans-serif;
+  }
+  p,
+  a {
+    font-family: "Roboto";
+    text-decoration: none;
+  }
+  p {
+    font-size: 1rem;
+    // line-height: 1.5;
+    // font-weight: 300;
+  }
+  h1 {
+    font-size: 3.75rem;
+    line-height: 1.1;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 3rem;
+    line-height: 1.1;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    font-weight: 400;
+  }
+  h4 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  h5 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+  h6 {
+    h4 {
+      font-size: 1.2rem;
+      line-height: 1.4;
+      font-weight: 400;
+    }
+  }
+}
+/*page-font-specifics*/
+.page {
+  h1,
+  h2 {
+    text-align: center;
+  }
+}
+
+/*post-font-specifics*/
+.post {
+  h1,
+  h2 {
+    text-align: left;
+  }
+}
+
+/*sidebar-font-specifics*/
+
+/*page-full-width-titles-START*/
+
+.page.full-width-content .single-post h2 {
+  width: 713px;
+  margin: 60px auto 0;
+  font-size: 3rem;
+  line-height: 1.1;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
+  font-weight: 300;
+  word-wrap: break-word;
+  position: relative;
+  unicode-bidi: isolate;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/*ICONS START*/
+
+/*-icons-look-START*/
+.icon-droit-civil {
+  a:before {
+    content: "\e901";
+  }
+}
+.icon-droit-fiscal {
+  a:before {
+    content: "\e902";
+  }
+}
+.icon-droit-des-icon-droit-fiscal {
+  a:before {
+    content: "\e903";
+  }
+}
+.icon-droit-penal {
+  a:before {
+    content: "\e904";
+  }
+}
+.icon-droit-du-travail {
+  a:before {
+    content: "\e905";
+  }
+}
+.icon-droit-commercial {
+  a:before {
+    content: "\e905";
+  }
+}
+.icon-droit-de-la-famille {
+  a:before {
+    content: "\e905";
+  }
+}
+.icon-droit-de-la-propriete-intellectuelle {
+  a:before {
+    content: "\e905";
+  }
+}
+.icon-international-prive {
+  a:before {
+    content: "\e905";
+  }
+}
+.icon-droit-des-contrats {
+  a:before {
+    content: "\e905";
+  }
+}
+/*-icons look-END*/
+/*-icons-parameters-START*/
+.single-button-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  a:before {
+    display: block;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1rem;
+    width: 4.1rem;
+    font-family: "Icomoon";
+    font-size: 2.65rem;
+    line-height: 1.5;
+    font-weight: 300;
+    color: colors.$font-color-2;
+    position: relative;
+    border-radius: 2.5rem;
+    background-color: colors.$font-color-1;
+  }
+}
+/*-icons-parameters-END*/
+/*ICONS END*/

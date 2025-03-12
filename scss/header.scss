@@ -1,0 +1,60 @@
+@use "colors.scss";
+header.site-header {
+  // background-color: unset;
+  height: 781px;
+  background-color: colors.$gradient-color-1;
+}
+.inside-header {
+  height: 100%;
+  padding-bottom: 0 !important;
+  .main-title a {
+    visibility: hidden;
+    font-size: 0.1px;
+    &::before {
+      visibility: visible !important;
+
+      content: "\e900";
+      font-family: "Icomoon";
+      font-size: 3.55rem;
+      line-height: 1.5;
+      font-weight: 300;
+      color: colors.$font-color-4;
+    }
+  }
+  /* 
+hidding the second header menu AKA Header advertising part
+*/
+  // .header-widget {
+  //   display: none;
+  // }
+
+  .sub-menu-right {
+    flex-grow: 4;
+  }
+}
+.inside-header {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .main-navigation {
+    flex-grow: unset;
+    background: transparent;
+    ul ul {
+      background-color: colors.$gradient-color-2;
+    }
+    .menu-item a {
+      font-size: 1.25rem;
+      color: colors.$font-color-4;
+    }
+    .main-nav ul li > a:hover {
+      color: colors.$font-color-2 !important;
+    }
+    .main-nav ul li[class*="current-menu-"] > a {
+      color: colors.$font-color-3;
+    }
+  }
+  div.header-widget {
+    //max-width: 55%;
+    margin-top: 6rem;
+    margin-left: unset;
+  }
+}

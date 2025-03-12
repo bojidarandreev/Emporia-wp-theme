@@ -1,0 +1,20 @@
+@use "colors.scss";
+.site .site-content .wpcf7 {
+  p label {
+    font-weight: 300;
+  }
+  .wpcf7-form-control-wrap {
+    input,
+    textarea {
+      border: 0.1rem solid colors.$font-color-5;
+    }
+  }
+  .wpcf7-submit {
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: colors.$font-color-4;
+    background-color: colors.$font-color-2;
+  }
+}
