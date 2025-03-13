@@ -18,3 +18,22 @@
     background-color: colors.$font-color-2;
   }
 }
+
+// Newsletter-start
+.widget_newsletterwidget {
+  .tnp-field-button input.tnp-submit {
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: colors.$font-color-4;
+    background-color: colors.$font-color-3;
+    max-width: 40%;
+    border: 1px solid colors.$font-color-3;
+  }
+  .tnp-widget input {
+    border-radius: 2rem;
+  }
+}
+
+// Newsletter-END

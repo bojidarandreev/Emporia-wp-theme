@@ -1,0 +1,40 @@
+@use "colors.scss";
+@use "fonts.scss";
+.site-footer {
+  color: colors.$font-color-4;
+  h2 {
+    text-align: left;
+  }
+  .footer-widgets {
+    background-color: colors.$background-color-1;
+    .inside-footer-widgets {
+      a {
+        color: colors.$font-color-4;
+      }
+      > div aside,
+      .textwidget {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .site-info {
+    background-color: colors.$background-color-2;
+  }
+  height: 100%;
+  padding-bottom: 0 !important;
+  .main-title a {
+    visibility: hidden;
+    font-size: 0.1px;
+    &::before {
+      visibility: visible !important;
+
+      content: "\e900";
+      font-family: "Icomoon";
+      font-size: 3.55rem;
+      line-height: 1.2;
+      font-weight: 300;
+      color: colors.$font-color-4;
+    }
+  }
+}
