@@ -1,11 +1,20 @@
 @use "colors.scss";
+
 header.site-header {
+  margin-bottom: 5rem;
+}
+.page header.site-header {
   // background-color: unset;
   height: 781px;
   background-color: colors.$gradient-color-1;
 }
+.single header.site-header {
+  // background-color: unset;
+  // height: 131px;
+  // background-color: colors.$font-color-2;
+}
 .inside-header {
-  height: 100%;
+  //height: 100%;
   padding-bottom: 0 !important;
   .main-title a {
     visibility: hidden;

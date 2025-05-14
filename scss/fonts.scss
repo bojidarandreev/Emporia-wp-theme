@@ -81,15 +81,17 @@ body {
     font-family: "Roboto";
     text-decoration: none;
   }
-  p {
+  p,
+  #content-header p strong {
     font-size: 1rem;
-    // line-height: 1.5;
-    // font-weight: 300;
+    line-height: 1.9;
+    font-weight: 300;
   }
   h1 {
-    font-size: 3.75rem;
-    line-height: 1.1;
+    font-size: 3.65rem;
+    line-height: 1.2;
     font-weight: 400;
+    margin-bottom: 1.3rem !important;
   }
   h2 {
     font-size: 3rem;
@@ -240,3 +242,10 @@ body {
 }
 /*-icons-parameters-END*/
 /*ICONS END*/
+
+// TEXT VERTICAL DISTANCE - start
+
+h1.entry-title {
+}
+
+// TEXT VERTICAL DISTANCE - end

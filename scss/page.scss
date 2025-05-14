@@ -3,7 +3,9 @@
 
 //PAGE LAYOUT
 
-.featured-image-active .featured-image {
+.page.featured-image-active .featured-image {
+  z-index: -1;
+
   &.page-header-image,
   &.page-header-image-single {
     max-width: 100%;

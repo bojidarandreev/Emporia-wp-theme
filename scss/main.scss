@@ -6,6 +6,7 @@
 @use "../scss/widgets.scss";
 @use "../scss/mail-form.scss";
 @use "../scss/footer.scss";
+@use "../scss/post.scss";
 
 .site.container {
   max-width: 100%;
@@ -13,7 +14,9 @@
   padding-right: 10%;
   //   background-color: white;
 }
-
-.featured-image {
-  z-index: -1;
+.breadcrumbs {
+  a,
+  strong {
+    color: red;
+  }
 }
