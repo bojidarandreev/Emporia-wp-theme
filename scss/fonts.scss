@@ -1,23 +1,24 @@
 @use "colors.scss";
+@use "_variables.scss" as *;
 
 @font-face {
   font-family: "Ubuntu";
-  font-weight: 300;
+  font-weight: $font-weight-light;
   src: url("../../assets/fonts/Ubuntu-Light.woff2") format("woff2");
 }
 @font-face {
   font-family: "Ubuntu";
-  font-weight: 400;
+  font-weight: $font-weight-regular;
   src: url("../../assets/fonts/Ubuntu-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "Ubuntu";
-  font-weight: 600;
+  font-weight: $font-weight-medium;
   src: url("../../assets/fonts/Ubuntu-Medium.woff2") format("woff2");
 }
 @font-face {
   font-family: "Ubuntu";
-  font-weight: 800;
+  font-weight: $font-weight-bold;
   src: url("../../assets/fonts/Ubuntu-Bold.woff2") format("woff2");
 }
 @font-face {
@@ -27,42 +28,37 @@
 }
 @font-face {
   font-family: "Roboto";
-  font-weight: 300;
+  font-weight: $font-weight-light;
   src: url("../../assets/fonts/Roboto-Light.woff2") format("woff2");
 }
 @font-face {
   font-family: "Roboto";
-  font-weight: 400;
+  font-weight: $font-weight-regular;
   src: url("../../assets/fonts/Roboto-Regular.woff2") format("woff2");
 }
 @font-face {
   font-family: "Roboto";
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   src: url("../../assets/fonts/Roboto-Medium.woff2") format("woff2");
 }
 @font-face {
   font-family: "Roboto";
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   src: url("../../assets/fonts/Roboto-Condensed.woff2") format("woff2");
 }
 @font-face {
   font-family: "Roboto";
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   src: url("../../assets/fonts/Roboto-Bold.woff2") format("woff2");
 }
 @font-face {
   font-family: "Roboto";
-  font-weight: 800;
-  src: url("../../assets/fonts/Roboto-BoldCondensed.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Roboto";
-  font-weight: 900;
+  font-weight: $font-weight-black;
   src: url("../../assets/fonts/Roboto-BoldCondensed.woff2") format("woff2");
 }
 @font-face {
   font-family: "Icomoon";
-  font-weight: 300;
+  font-weight: $font-weight-light;
   src: url("../../assets/fonts/icomoon.woff") format("woff");
 }
 
@@ -74,51 +70,50 @@ body {
   h4,
   h5,
   h6 {
-    font-family: Ubuntu, sans-serif;
+    font-family: $font-primary;
+    margin-bottom: $space-md;
   }
   p,
   a {
-    font-family: "Roboto";
+    font-family: $font-secondary;
     text-decoration: none;
   }
   p,
   #content-header p strong {
-    font-size: 1rem;
-    line-height: 1.9;
-    font-weight: 300;
+    font-size: $body-size;
+    line-height: $base-line-height;
+    font-weight: $font-weight-light;
   }
   h1 {
-    font-size: 3.65rem;
+    font-size: $h1-size;
     line-height: 1.2;
-    font-weight: 400;
-    margin-bottom: 1.3rem !important;
+    font-weight: $font-weight-regular;
+    margin-bottom: $space-md !important;
   }
   h2 {
-    font-size: 3rem;
+    font-size: $h2-size;
     line-height: 1.1;
-    font-weight: 300;
+    font-weight: $font-weight-light;
   }
   h3 {
-    font-size: 2.25rem;
+    font-size: $h3-size;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: $font-weight-regular;
   }
   h4 {
-    font-size: 1.5rem;
+    font-size: $h4-size;
     line-height: 1.2;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
   }
   h5 {
-    font-size: 1.25rem;
+    font-size: $h5-size;
     line-height: 1.2;
-    font-weight: 500;
+    font-weight: $font-weight-medium;
   }
   h6 {
-    h4 {
-      font-size: 1.2rem;
-      line-height: 1.4;
-      font-weight: 400;
-    }
+    font-size: $h6-size;
+    line-height: 1.4;
+    font-weight: $font-weight-regular;
   }
 }
 /*page-font-specifics*/
@@ -142,20 +137,18 @@ body {
 /*page-full-width-titles-START*/
 
 .page.full-width-content .single-post h2 {
-  width: 713px;
-  margin: 60px auto 0;
-  font-size: 3rem;
+  width: 44.5625rem; // 713px
+  margin: $space-xl auto 0;
+  font-size: $h2-size;
   line-height: 1.1;
-  // margin-top: 20px;
-  // margin-bottom: 20px;
-  font-weight: 300;
+  font-weight: $font-weight-light;
   word-wrap: break-word;
   position: relative;
   unicode-bidi: isolate;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 /*ICONS START*/
@@ -226,14 +219,12 @@ body {
   a:before {
     display: block;
     position: relative;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 1rem;
+    margin: 0 auto $space-md;
     width: 4.1rem;
-    font-family: "Icomoon";
+    font-family: $font-icons;
     font-size: 2.65rem;
     line-height: 1.5;
-    font-weight: 300;
+    font-weight: $font-weight-light;
     color: colors.$font-color-2;
     position: relative;
     border-radius: 2.5rem;

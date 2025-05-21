@@ -2,9 +2,97 @@
 @use "colors.scss";
 
 //PAGE LAYOUT
+.home.page-template-default {
+  background-color: colors.$background-color-3;
+  .breadcrumbs {
+    display: none;
+  }
+  .wp-block-column {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
+  .wp-block-column h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    a {
+      text-decoration: none;
+      color: #333;
+
+      &::before {
+        visibility: visible !important;
+
+        content: "\e902";
+        font-family: "Icomoon";
+        font-size: 3.55rem;
+        line-height: 1.5;
+        font-weight: 300;
+        color: colors.$font-color-2;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: #666;
+      }
+    }
+  }
+
+  .wp-block-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .wp-block-column li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+
+    a {
+      font-family: "Ubuntu", sans-serif;
+      color: colors.$font-color-1;
+    }
+
+    &:hover {
+      color: #666;
+      text-decoration: underline;
+    }
+  }
+
+  .wp-block-column .wp-block-button {
+    text-align: center;
+    margin-top: 20px;
+
+    a {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #666;
+        color: #fff;
+      }
+    }
+  }
+}
 .page.featured-image-active .featured-image {
   z-index: -1;
+
+  width: 100vw; // make the image full-width
+  height: 781px; // keep the height as is
+  overflow: hidden; // hide any excess image
+  position: absolute; // position the image absolutely
+  top: 0; // top position
+  left: 0; // left position
+  margin-top: 0; // remove any margin top
 
   &.page-header-image,
   &.page-header-image-single {
@@ -17,9 +105,13 @@
     margin-top: 0;
     img {
       //max-width: 270vw;
-      min-width: 100vw;
-      height: auto;
-      min-height: 781px;
+
+      // min-width: 100vw;
+      // height: auto;
+      // min-height: 781px;
+      width: 100%; // make the image full-width
+      height: 100%; // make the image full-height
+      object-fit: cover; // cover the entire container with the image
     }
   }
 }

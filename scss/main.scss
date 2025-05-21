@@ -1,12 +1,13 @@
-@use "../scss/normalizer2.scss";
-@use "../scss/fonts.scss";
+@use "_variables.scss" as *;
+@use "normalizer2.scss";
+@use "fonts.scss";
 @use "colors.scss";
-@use "../scss/header.scss";
-@use "../scss/page.scss";
-@use "../scss/widgets.scss";
-@use "../scss/mail-form.scss";
-@use "../scss/footer.scss";
-@use "../scss/post.scss";
+@use "header.scss";
+@use "page.scss";
+@use "widgets.scss";
+@use "mail-form.scss";
+@use "footer.scss";
+@use "post.scss";
 
 .site.container {
   max-width: 100%;
@@ -17,6 +18,6 @@
 .breadcrumbs {
   a,
   strong {
-    color: red;
+    color: colors.$font-color-2;
   }
 }

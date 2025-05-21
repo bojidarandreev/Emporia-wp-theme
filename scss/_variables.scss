@@ -1,0 +1,41 @@
+// Base measurements
+$base-font-size: 1rem; // 16px
+$base-line-height: 1.5;
+$base-spacing: 1.5rem; // 24px base spacing unit
+
+// Typography scale (1.5x ratio between heading levels)
+$h1-size: 3.65rem; // 58.4px
+$h2-size: 3rem; // 48px
+$h3-size: 2.25rem; // 36px
+$h4-size: 1.5rem; // 24px
+$h5-size: 1.25rem; // 20px
+$h6-size: 1.2rem; // 19.2px
+$body-size: 1rem; // 16px
+$small-size: 0.875rem; // 14px
+
+// Spacing scale (multiples of 6px/0.375rem)
+$space-xs: 0.375rem; // 6px
+$space-sm: 0.75rem; // 12px
+$space-md: 1.5rem; // 24px
+$space-lg: 2.25rem; // 36px
+$space-xl: 3rem; // 48px
+$space-xxl: 4.5rem; // 72px
+
+// Layout measurements
+$container-max-width: 75rem; // 1200px
+$content-max-width: 50rem; // 800px
+$header-height: 8.1875rem; // 131px
+$featured-image-height: 26.3125rem; // 421px
+
+// Font families
+$font-primary: "Ubuntu", sans-serif;
+$font-secondary: "Roboto", sans-serif;
+$font-icons: "Icomoon", sans-serif;
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-black: 800;
