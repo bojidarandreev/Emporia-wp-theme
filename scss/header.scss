@@ -47,8 +47,54 @@ hidding the second header menu AKA Header advertising part
   .main-navigation {
     flex-grow: unset;
     background: transparent;
+    .menu-item-has-children {
+      &:hover {
+        background-color: colors.$font-color-4;
+        border-radius: 10px 10px 0 0; // rounded bottom corners
+      }
+
+      .sub-menu {
+        li {
+          &:hover {
+            background-color: transparent; // override default background color
+            border-radius: 10px 10px 0 0; // rounded bottom corners
+          }
+        }
+
+        &:hover {
+          .menu-item-has-children {
+            background-color: colors.$font-color-4;
+            border-radius: 10px 10px 0 0; // rounded bottom corners
+          }
+        }
+      }
+    }
     ul ul {
-      background-color: colors.$gradient-color-2;
+      // background-color: colors.$gradient-color-2;
+      background-color: colors.$font-color-4;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px;
+      border-radius: 0 0 10px 10px; // rounded bottom corners
+      width: fit-content; // width equal to longest li child element
+      a &:hover {
+        background: black;
+      }
+
+      li.menu-item {
+        margin-right: 20px;
+        color: black !important;
+
+        &:hover {
+          color: colors.$font-color-2;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
     }
     .menu-item a {
       font-size: 1.25rem;

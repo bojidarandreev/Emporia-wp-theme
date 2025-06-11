@@ -9,11 +9,16 @@
 @use "footer.scss";
 @use "post.scss";
 
-.site.container {
-  max-width: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
-  //   background-color: white;
+.site {
+  &.container {
+    max-width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  &.container,
+  div.inside-article {
+    background-color: colors.$font-color-4;
+  }
 }
 .breadcrumbs {
   a,
