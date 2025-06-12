@@ -1,4 +1,9 @@
 // Base measurements
+:root {
+  --scrollbar-width: calc(100vw - 100%);
+  --header-height: 8.1875rem; // 131px
+}
+
 $base-font-size: 1rem; // 16px
 $base-line-height: 1.5;
 $base-spacing: 1.5rem; // 24px base spacing unit
@@ -24,7 +29,6 @@ $space-xxl: 4.5rem; // 72px
 // Layout measurements
 $container-max-width: 75rem; // 1200px
 $content-max-width: 50rem; // 800px
-$header-height: 8.1875rem; // 131px
 $featured-image-height: 26.3125rem; // 421px
 
 // Font families
@@ -39,3 +43,8 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $font-weight-black: 800;
+
+// Border radius
+$border-radius-tiny: 1rem;
+$border-radius-button: 2rem; // For buttons and links
+$border-radius-element: 50px; // For other elements (divs, images, etc.)

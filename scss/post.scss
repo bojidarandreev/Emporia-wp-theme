@@ -158,10 +158,8 @@ $space-xl: 3rem; // 48px
       margin-bottom: $space-md;
     }
   }
-  .entry-content {
-  }
   header.site-header {
-    height: $header-height;
+    height: var(--header-height, 0px);
     background-color: colors.$font-color-2;
   }
   // &.featured-image-active .featured-image {

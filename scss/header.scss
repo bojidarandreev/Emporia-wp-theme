@@ -1,4 +1,5 @@
 @use "colors.scss";
+@use "_variables.scss" as *;
 
 header.site-header {
   margin-bottom: 5rem;
@@ -8,11 +9,7 @@ header.site-header {
   height: 781px;
   background-color: colors.$gradient-color-1;
 }
-.single header.site-header {
-  // background-color: unset;
-  // height: 131px;
-  // background-color: colors.$font-color-2;
-}
+
 .inside-header {
   //height: 100%;
   padding-bottom: 0 !important;
@@ -50,21 +47,21 @@ hidding the second header menu AKA Header advertising part
     .menu-item-has-children {
       &:hover {
         background-color: colors.$font-color-4;
-        border-radius: 10px 10px 0 0; // rounded bottom corners
+        border-radius: $border-radius-button $border-radius-button 0 0; // rounded bottom corners
       }
 
       .sub-menu {
         li {
           &:hover {
             background-color: transparent; // override default background color
-            border-radius: 10px 10px 0 0; // rounded bottom corners
+            border-radius: $border-radius-button $border-radius-button 0 0; // rounded bottom corners
           }
         }
 
         &:hover {
           .menu-item-has-children {
             background-color: colors.$font-color-4;
-            border-radius: 10px 10px 0 0; // rounded bottom corners
+            border-radius: $border-radius-button $border-radius-button 0 0; // rounded bottom corners
           }
         }
       }
@@ -76,15 +73,15 @@ hidding the second header menu AKA Header advertising part
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 10px;
-      border-radius: 0 0 10px 10px; // rounded bottom corners
+      border-radius: 0 0 $border-radius-button $border-radius-button; // rounded bottom corners
       width: fit-content; // width equal to longest li child element
       a &:hover {
-        background: black;
+        background: colors.$font-color-1;
       }
 
       li.menu-item {
         margin-right: 20px;
-        color: black !important;
+        color: colors.$font-color-1 !important;
 
         &:hover {
           color: colors.$font-color-2;

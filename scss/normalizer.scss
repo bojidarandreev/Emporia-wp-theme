@@ -1,5 +1,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
+@use "colors.scss";
+
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
@@ -142,8 +144,8 @@ h1 {
    */
 
 mark {
-  background: #ff0;
-  color: #000;
+  background: colors.$font-color-3;
+  color: colors.$font-color-1;
 }
 
 /**

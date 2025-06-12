@@ -1,5 +1,6 @@
 @use "../scss/fonts.scss";
 @use "colors.scss";
+@use "_variables.scss" as *;
 
 //HOME PAGE LAYOUT
 .home.page-template-default {
@@ -41,17 +42,19 @@
   .entry-content > div,
   .statistics-numbers-block .consultation-button-block {
     margin-bottom: 10rem;
+    &.no-magin-bottom {
+      margin-bottom: 6rem;
+    }
   }
 
   .tree-columns-with-button {
     gap: 3em;
     padding-bottom: 1.6rem;
     .wp-block-column {
-      background-color: #f7f7f7;
+      background-color: colors.$background-color-3;
       padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 50px;
-      // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid colors.$font-color-5;
+      border-radius: $border-radius-element;
     }
   }
   // .tree-columns-with-button {
@@ -72,7 +75,7 @@
       flex-direction: column;
       align-items: center;
       text-decoration: none;
-      color: #333;
+      color: colors.$font-color-2;
 
       &::before {
         visibility: visible;
@@ -87,12 +90,12 @@
         max-width: 4.1rem;
         padding: 2px 12px;
         margin-bottom: 16px;
-        border-radius: 2.3rem;
+        border-radius: $border-radius-button;
       }
 
       &:hover {
         text-decoration: none;
-        color: #666;
+        color: colors.$font-color-5;
       }
     }
   }
@@ -114,7 +117,7 @@
     }
 
     &:hover {
-      color: #666;
+      color: colors.$font-color-5;
       text-decoration: underline;
     }
   }
@@ -127,15 +130,15 @@
       background-color: colors.$font-color-2;
       color: #fff;
       padding: 10px 20px;
-      border-radius: 25px;
+      border-radius: $border-radius-button;
       text-decoration: none;
       border: none;
       text-transform: uppercase;
       font-weight: 600;
 
       &:hover {
-        background-color: #666;
-        color: #fff;
+        background-color: colors.$font-color-5;
+        color: colors.$font-color-4;
       }
     }
   }
@@ -224,21 +227,53 @@
 
   .need-from-defence-block {
     position: relative;
-  }
+    width: calc(100vw - var(--scrollbar-width, 0px));
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50.7%);
+    margin-top: -6rem; // Negative margin to overlap with testimonials
+    margin-bottom: -6rem; // Negative margin to overlap with footer
+    height: calc(
+      100vh - var(--header-height, 0px)
+    ); // Full viewport height minus header
 
-  .need-from-defence-block figure {
-    position: relative;
-    z-index: 0;
-  }
+    figure {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100vw - var(--scrollbar-width, 0px));
+      height: 100%;
+      z-index: 0;
+      margin: 0;
 
-  .need-from-defence-block div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    z-index: 1;
-    background-color: #fff; /* or any other background color you want */
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    > div {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding-left: 10%;
+      padding-right: 10%;
+      background-color: unset;
+      align-content: center;
+      flex-wrap: wrap !important;
+      background-color: colors.$gradient-color-1;
+      h2,
+      p {
+        color: colors.$font-color-4;
+      }
+      .text-description-block {
+        max-width: 66.66%;
+      }
+      .mail-form-block {
+        max-width: 33.33%;
+      }
+    }
   }
 }
 
@@ -246,7 +281,7 @@
 .testimonials-block {
   background-color: colors.$font-color-2;
   position: relative;
-  z-index: 1;
+  z-index: 2; // Ensure it's above the need-from-defence-block
   padding: 6rem 3rem 6rem 3rem;
 
   &::before {
@@ -459,7 +494,7 @@
         text-align: center;
       }
       border: 1px solid colors.$font-color-1;
-      border-radius: 2rem;
+      border-radius: $border-radius-element;
       padding-top: 1rem;
       padding-bottom: 1rem;
       padding-left: 1rem;
@@ -491,11 +526,9 @@
     }
   }
   .wp-block {
-    &-column {
-    }
     &-buttons {
       border: 1px solid colors.$font-color-1;
-      border-radius: 2rem;
+      border-radius: $border-radius-element;
       margin-top: 20px;
       margin-bottom: 20px;
       display: flex;
@@ -531,6 +564,57 @@
         color: colors.$font-color-1;
         background-color: colors.$opacity-color-0;
       }
+    }
+  }
+}
+
+.summary-block {
+  details {
+    summary {
+      position: relative;
+      padding-right: 2.5rem;
+      cursor: pointer;
+      padding-bottom: 1.5rem;
+      
+      
+      &::marker {
+        color: colors.$font-color-4;
+      }
+      
+      &::after {
+        content: "ᐱ";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: colors.$font-color-3;
+        color: colors.$font-color-4;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+    }
+    p {
+      padding-left: 1.1rem;
+    }
+    
+    &[open] summary::after {
+      content: "ᐯ";
+    }
+  }
+  figure {
+    // max-width: 30%; // set max-width to 30% of parent
+    aspect-ratio: 1/1; // set aspect ratio to 1:1 to make it square
+    overflow: hidden; // hide overflow to crop the image
+    border-radius: 50px;
+    img {
+      width: 100%; // set width to 100% to resize proportionally
+      height: 100%; // set height to 100% to resize proportionally
+      object-fit: cover; // use object-fit to cover the entire container
     }
   }
 }
