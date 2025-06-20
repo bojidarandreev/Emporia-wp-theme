@@ -10,8 +10,23 @@
 @use "post.scss";
 @use "blog.scss";
 
+body.wp-child-theme-ChihldThemeGeneratePress {
+  display: flex;
+  flex-direction: column;
+}
+.breadcrumbs {
+  order: 1;
+  a,
+  strong {
+    color: colors.$font-color-2;
+  }
+}
+header.site-header {
+  order: 0;
+}
 .site {
   &.container {
+    order: 2;
     max-width: 100%;
     padding-left: 10%;
     padding-right: 10%;
@@ -21,9 +36,7 @@
     background-color: colors.$font-color-4;
   }
 }
-.breadcrumbs {
-  a,
-  strong {
-    color: colors.$font-color-2;
-  }
+
+.site-footer {
+  order: 3;
 }

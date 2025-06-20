@@ -36,7 +36,6 @@
         overflow: hidden;
         border-radius: vars.$border-radius-element;
         position: absolute;
-        // top: vars.$space-lg;
         margin-top: 0;
         height: calc(100% - #{vars.$space-lg * 2});
 
@@ -56,6 +55,14 @@
         &:hover img {
           transform: scale(1.05);
         }
+      }
+
+      .entry-meta {
+        width: 55%;
+        margin-bottom: vars.$space-sm;
+        color: colors.$font-color-2;
+        font-size: vars.$small-size;
+        font-weight: vars.$font-weight-medium;
       }
 
       .entry-summary {
@@ -133,8 +140,13 @@
           left: 0;
         }
 
+        .entry-meta {
+          order: 2;
+          margin-left: 45%;
+        }
+
         .entry-summary {
-          order: 1;
+          order: 3;
           margin-left: 45%;
 
           .read-more {
@@ -157,8 +169,13 @@
           right: 0;
         }
 
-        .entry-summary {
+        .entry-meta {
           order: 2;
+          margin-right: 45%;
+        }
+
+        .entry-summary {
+          order: 3;
           margin-right: 45%;
 
           .read-more {
