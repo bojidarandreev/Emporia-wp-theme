@@ -6,11 +6,16 @@
   .category-temoignage {
     display: none;
   }
+  .inside-article {
+    .byline, footer.entry-meta, .tags-links  {
+      display: none;
+    }
+  }
   #content-header,
   .no-results {
     display: none;
   }
-}
+
 
 .site-main {
   article {
@@ -18,7 +23,7 @@
     .inside-article {
       display: flex;
       flex-wrap: wrap;
-      gap: vars.$space-lg;
+      gap: vars.$space-xs;
       padding: vars.$space-lg 0;
       position: relative;
 
@@ -26,8 +31,8 @@
         width: 55%;
         margin-bottom: vars.$space-sm;
         h2 {
-          font-size: vars.$h2-size;
-          line-height: vars.$base-line-height-small;
+          font-size: vars.$h3-size;
+          line-height: vars.$base-line-height-smaller;
         }
       }
 
@@ -69,10 +74,11 @@
         width: 55%;
         display: flex;
         flex-direction: column;
+        margin-top: 0;
 
         p {
           display: flex;
-          margin-bottom: vars.$space-sm;
+          // margin-bottom: vars.$space-sm;
           flex-direction: column;
         }
 
@@ -143,11 +149,13 @@
         .entry-meta {
           order: 2;
           margin-left: 45%;
+          margin-left: 0;
         }
 
         .entry-summary {
           order: 3;
           margin-left: 45%;
+          margin-top: 0.3rem;
 
           .read-more {
             align-self: flex-end;
@@ -185,4 +193,5 @@
       }
     }
   }
+}
 }
