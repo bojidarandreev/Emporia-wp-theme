@@ -80,7 +80,7 @@ body {
   }
   p,
   #content-header p strong {
-    font-size: $body-size;
+    font-size: $h5-size;
     line-height: $base-line-height;
     font-weight: $font-weight-light;
   }
@@ -120,7 +120,7 @@ body {
 .page {
   h1,
   h2 {
-    text-align: center;
+    // text-align: center;
   }
 }
 

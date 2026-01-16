@@ -1,0 +1,87 @@
+@use "breakpoints";
+// Layout fixes: ensure certain elements match `.site-content` width responsively
+// Targets:
+// - .inside-header.grid-container
+// - .post-template-default.single.single-post .site.grid-container.container.hfeed .entry-meta
+// - .footer-widgets-container.grid-container
+// They will be centered and constrained to the same inner width as .site-content
+
+// The theme may use container widths or CSS variables; we simulate the same max-width and centering.
+
+/* Shared helper: center and limit width to match site-content */
+.layout-match-site-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1400px; /* fallback default - adjust if your theme defines a different container width */
+  padding-left: 10%; /* keep some gutter */
+  padding-right: 10%;
+  box-sizing: border-box;
+}
+
+
+/* Apply to requested selectors */
+.inside-header.grid-container,
+.post-template-default.single.single-post .site.grid-container.container.hfeed .entry-meta,
+.footer-widgets-container.grid-container, .blog .site .site-content, .single .site.grid-container.container.hfeed .site-content, .single-post .site.container #content-header p:has(strong), .single-post .site.container #content-header .entry-title, body:not(.home) header.site-header + .breadcrumbs {
+  @extend .layout-match-site-content;
+}
+
+// .blog.wp-child-theme-ChihldThemeGeneratePress .site .site-content {
+//   padding-left: 0; /* keep some gutter */
+//   padding-right: 0;
+// }
+.blog.wp-child-theme-ChihldThemeGeneratePress .site .site-content, .single .site.grid-container.container.hfeed .site-content,.single-post .site.container #content-header p:has(strong), .single-post .site.container #content-header .entry-title, body:not(.home) header.site-header + .breadcrumbs {
+  padding-left: 0; 
+  padding-right: 0;
+}
+.page.wp-child-theme-ChihldThemeGeneratePress .site {
+  .site-content, .content-header  {
+  padding-left: 0; 
+  padding-right: 0;
+  max-width: 1400px;
+  .page .inside-article {
+    padding: 0;
+  }
+}
+ > div {
+    padding-left: 0; 
+    padding-right: 0;
+    max-width: 1400px;
+
+  }
+}
+/* Responsive adjustments - ensure gutters match site-content at smaller sizes */
+@media (max-width: 1200px) {
+  .layout-match-site-content {
+    max-width: 1000px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+@media (max-width: 900px) {
+  .layout-match-site-content {
+    max-width: 720px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .layout-match-site-content {
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* If your theme exposes a different container, consider replacing max-width with that value */
+
+/* Fix malformed rule: ensure .single-post .site-content has correct padding syntax */
+// .single-post .site-content {
+//   padding-left: 10%;
+//   padding-right: 10%;
+// }
+
+.widget_lpwtoc_widget .lwptoc-notInherit .lwptoc_i DIV A:hover {
+  border-bottom: none!important;
+}

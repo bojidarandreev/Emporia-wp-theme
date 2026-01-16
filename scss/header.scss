@@ -1,20 +1,282 @@
 @use "colors.scss";
-@use "_variables.scss" as *;
+@use "_variables.scss" as vars;
 
-header.site-header {
-  // margin-bottom: 5rem;
-}
-.page header.site-header {
-  // background-color: unset;
+// Homepage header
+body.home header.site-header {
   height: 781px;
+  min-height: 781px;
+  max-height: 781px;
   background-color: colors.$gradient-color-1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  .header-widget{
+    min-width: 100%;
+    .header-page-widget-title {
+      font-size: vars.$h5-size;
+      font-weight: vars.$font-weight-regular;
+      line-height: vars.$h6-size;
+      text-transform: uppercase;
+    }
+  }
 }
-header.site-header {
+
+body.home header.site-header img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  
+}
+
+// All other pages and posts: match /actualites/ header spacing
+body:not(.home).page,
+body:not(.home).blog {
+  header.site-header {
+  .header-widget{
+    min-width: 100%;
+  }
+}
+}
+body:not(.home).blog {
+  header.site-header {
+  .header-widget{
+    margin-top: 1rem;
+  }
+}
+}
+body:not(.home).single header.site-header {
+  .header-widget{
+    min-width: 100%;
+    margin-top: 1rem;
+  }
+}
+body:not(.home) header.site-header {
   background-color: colors.$font-color-2;
+  height: auto;
+  min-height: unset;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+body:not(.home) {
+ header.site-header {
+  background-color: transparent;
+
+}
+}
+
+body:is(.blog), body:is(.single) {
+ header.site-header {
+  background-color: colors.$font-color-2;
+  height: auto;
+  min-height: unset;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+}
+
+// Remove gap between header and #page
+body:not(.home) header.site-header + .breadcrumbs {
+  margin-top: 0;
+}
+body:not(.home) .breadcrumbs + #page {
+  margin-top: 0;
+}
+
+// Breadcrumbs spacing (match /actualites/)
+.breadcrumbs {
+  margin-bottom: vars.$space-lg;
+  padding-top: vars.$space-lg;
+  margin-left: 3vw;
+  &:last-child {
+    display: none;
+  }
+  // Replace the "/" separator with "❯" using CSS only
+  a + * {
+    position: relative;
+  }
+  a + *::before {
+    content: '❯';
+    margin: 0 0.5em;
+    color: colors.$font-color-5;
+    font-size: 1em;
+    vertical-align: middle;
+    /* Optionally hide the original slash if it's a text node */
+  }
+}
+ul#menu-menu-principal[aria-hidden="false"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // background: RGBA(0, 0, 0, 0.01);
+  // background: linear-gradient(180deg,rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.91) 20%, rgba(0, 0, 0, 0.91) 100%);
+  // background: linear-gradient(180deg,rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.91) 20%, rgba(255, 255, 255, 0.91) 100%);
+}
+ul#menu-menu-principal[aria-hidden="false"] li {
+  
+  // a{
+  // }
+}
+
+.inside-header .main-navigation .menu-item.sfHover ul li a {
+    font-size: vars.$h7-size;
+    font-weight: vars.$font-weight-regular;
+    line-height: vars.$space-xsm;
+  }
+//Change parent menu element background when mobile toggled. 
+// .inside-header.grid-container {
+//   background-color: #d42222; // default background
+//   transition: background-color 0.3s ease;
+
+//   // When the child button inside this structure has aria-expanded="true"
+//   &:has(
+//     .main-navigation.mobile-menu-control-wrapper
+//       .menu-toggle[aria-expanded="true"]
+//   ) {
+//     background-color: #e3dddd; // new background when menu is open
+//   }
+// }
+// .header-widget {display: none;}
+
+.mobileMenuIconsWidgetGroup {
+    position: fixed;
+    display: none;
+    left: 21vw;
+  }
+.mobileMenuStickedDown {
+  bottom: 2rem;
+  .widget-item svg {
+    fill: colors.$font-color-7;
+  }
+}
+.mobileMenuStickedUp {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 0.7rem;
+    left: 40vw;
+    .mobileMenuIconsWidget {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      .widget-item svg {
+        width: 2rem;
+        height: 2rem;
+        display: block;
+      }
+    }
+  }
+    
+  }
+
+// .mobileMenuStickedUp {
+//   top: 0.7rem;
+// }
+.mobile-menu-open {
+  overflow: hidden;
+  height: 100vh;
+  .mobileMenuStickedUp {
+  left: 19vw;
+  }
+  .mobileMenuIconsWidgetGroup {
+    position: fixed;
+    display: block;
+    z-index: 999;
+    .mobileMenuIconsWidget {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    .widget-item {
+       display: flex;
+      gap: 20px;
+      align-items: center;
+      a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+    }
+    svg {
+        display: block;
+        width: vars.$icon-size-medium;
+        height: vars.$icon-size-medium;
+        display: block;
+      }
+  }
+}
+}
+  
+  .mobile-menu-control-wrapper {
+    .menu-toggle { 
+      // position: fixed;
+      // right: 30px;
+      // top: 45px;
+      // z-index:100;
+      // color: red!important;
+      overflow-y: hidden;
+      &:before {
+        content: "";
+        background-color: colors.$font-color-2;
+        position: fixed;
+        width: 86vw;
+        height: 4.8rem;
+        top: 0;
+        right: 0;
+        z-index: -1;
+      }
+      &:after {
+        content: "";
+        background: RGBA(0, 0, 0, 0.3);
+        position: fixed;
+        width: calc(100vw - 86vw - var(--scrollbar-width));
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      .gp-icon {
+        &::after {
+            content:"";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 49px;
+            height: 47px;
+            background-color: transparent;
+            border: 1px white solid;
+          }
+      }
+    }
+    
+  }
+}
+
+// Responsive image in header (for all pages)
+header.site-header img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 .inside-header {
   //height: 100%;
   padding-bottom: 0 !important;
+  
   .main-title a {
     visibility: hidden;
     font-size: 0.1px;
@@ -24,9 +286,17 @@ header.site-header {
       content: "\e900";
       font-family: "Icomoon";
       font-size: 3.55rem;
-      line-height: 1.5;
+      
       font-weight: 300;
+      line-height: 1.7;
+      
       color: colors.$font-color-4;
+      @media (max-width: 968px){
+        font-size: 1.85rem;
+        line-height: 0;
+        position: relative;
+        top: 0.8rem;
+      }
     }
   }
   /* 
@@ -40,75 +310,215 @@ hidding the second header menu AKA Header advertising part
     flex-grow: 4;
   }
 }
+.main-navigation .menu-toggle {
+  
+}
+
+@media (max-width: 768px){
+  .main-navigation.sub-menu-right.toggled {
+      margin-top: 0!important;
+      .main-nav {
+        position: fixed;
+        height: calc(100vh - 4.8rem);
+        width: 86vw;
+        top: 4.8rem;
+        right: 0;
+        background: colors.$font-color-2;
+        .sf-menu {
+          padding: 2.2rem 0rem 0rem 0.7rem;
+        }
+      }
+      // position: fixed;
+      // right: 0;
+      // top: 85px;
+      // width: 85%;
+
+
+    }
+}
+
 .inside-header {
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 768px){
+    align-items: start;
+  }
+  .mobile-menu-control-wrapper {
+    margin-right: 0;
+    @media (max-width: 290px){
+       margin-right: 0.5rem;
+    }
+  }
+  .site-branding a::before  {
+    @media (max-width: 290px){
+      font-size: 2.35rem;
+    }
+    
+  }
+  // .mobile-menu-control-wrapper {
+  //     @media (max-width: 968px) {
+  //       display: flex;
+  //       flex-wrap: wrap;
+  //       .menu-toggle {
+  //         display: block;
+  //       }
+  //   }
+  // }
+  // .sub-menu-right {
+  //     @media (max-width: 968px) {
+  //       display: none;;
+  //     }
+  //   }
+  
   .main-navigation {
     flex-grow: unset;
     background: transparent;
+    @media (max-width: 768px){
+    top: 5rem;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    }
+    .menu-toggle {
+          color: #f2f8fc;
+          position: fixed;
+          right: 0.7rem;
+          top: 0.9rem;
+          z-index: 100;
+          background-color: colors.$font-color-2!important;
+          border-radius: 0.3rem;
+          padding: 0 14px;
+          line-height: 54px;
+          font-size: 28.1px;
+      // padding: 0px 20px 23px 5px;
+      // @media (max-width: 290px){
+      //   padding: 0px 0px 22px 0px;
+      //   font-size: 19px;
+      // }
+      
+    }
     .menu-item-has-children {
+
       &:hover {
         background-color: colors.$font-color-4;
-        border-radius: $border-radius-button $border-radius-button 0 0; // rounded bottom corners
+        border-radius: vars.$border-radius-tiny vars.$border-radius-tiny 0 0; 
+        ul {
+          border-radius: 0 0 vars.$border-radius-tiny vars.$border-radius-tiny;
+        }
       }
 
       .sub-menu {
         li {
           &:hover {
-            background-color: transparent; // override default background color
-            border-radius: $border-radius-button $border-radius-button 0 0; // rounded bottom corners
+            //background-color: transparent; // override default background color
+            border-radius: vars.$border-radius-button vars.$border-radius-button 0 0; 
           }
         }
 
         &:hover {
           .menu-item-has-children {
-            background-color: colors.$font-color-4;
-            border-radius: $border-radius-button $border-radius-button 0 0; // rounded bottom corners
+            // background-color: colors.$font-color-4;
+            // border-radius: vars.$border-radius-button vars.$border-radius-button 0 0; 
           }
         }
       }
     }
     ul ul {
       // background-color: colors.$gradient-color-2;
-      background-color: colors.$font-color-4;
+      background-color: colors.$font-color-2;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       padding: 10px;
-      border-radius: 0 0 $border-radius-button $border-radius-button; // rounded bottom corners
+      // border-radius: 0 0 vars.$border-radius-button vars.$border-radius-button; // rounded bottom corners
       width: fit-content; // width equal to longest li child element
       a &:hover {
-        background: colors.$font-color-1;
+        // background: colors.$font-color-1;
       }
 
       li.menu-item {
         margin-right: 20px;
-        color: colors.$font-color-1 !important;
+        color: colors.$font-color-4 !important;
 
         &:hover {
           color: colors.$font-color-2;
+
         }
 
+        &:not[class*="current-menu-"] {
+          a {
+            color: colors.$font-color-4;
+          }
+        }
         a {
           text-decoration: none;
           color: inherit;
         }
       }
     }
+    .menu-item ul li {
+          
+}
+    
     .menu-item a {
-      font-size: 1.25rem;
       color: colors.$font-color-4;
+      font-size: vars.$space-xsm;
+      font-weight: vars.$font-weight-regular;
+      // letter-spacing: calc(vars.$space-md - vars.$space-xs);
+      text-decoration: none;
+      @media (max-width: 968px){
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 0;
+        line-height: 29px;
+        padding-bottom: 17px;
+        font-weight: vars.$font-weight-medium;
+      }
+      
     }
     .main-nav ul li > a:hover {
-      color: colors.$font-color-2 !important;
+      color: colors.$font-color-4 !important;
+      background-color: colors.$font-color-2;
     }
     .main-nav ul li[class*="current-menu-"] > a {
       color: colors.$font-color-3;
     }
+    
   }
   div.header-widget {
     //max-width: 55%;
     margin-top: 6rem;
-    margin-left: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+
+// .breadcrumbs {
+//   .breadcrumb-item {
+//     a[href$="/emporia-legal/"] {
+//       text-indent: -9999px;
+//       white-space: nowrap;
+//       display: inline-block;
+//       width: 16px; 
+//       height: 16px; 
+//       &::before {
+//         content: '🏡';
+//         font-size: 16px; 
+//         text-indent: 0;
+//         display: inline-block;
+//       }
+//     }
+//   }
+
+//   .separator {
+//     text-indent: -9999px;
+//     white-space: nowrap;
+//     display: inline-block;
+//     width: 10px; 
+//     &::before {
+//       content: '❯';
+//       text-indent: 0;
+//       display: inline-block;
+//     }
+//   }
+// }

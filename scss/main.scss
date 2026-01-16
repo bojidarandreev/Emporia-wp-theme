@@ -9,7 +9,10 @@
 @use "footer.scss";
 @use "post.scss";
 @use "blog.scss";
-
+@use "team.scss";
+@use "layout-fix.scss";
+@use "gpTemplate.scss";
+@use "geminiTemplate.scss";
 body.wp-child-theme-ChihldThemeGeneratePress {
   display: flex;
   flex-direction: column;

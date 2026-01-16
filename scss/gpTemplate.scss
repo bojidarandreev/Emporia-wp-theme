@@ -1,0 +1,256 @@
+// template-styles.scss
+// BEM-scoped styles for template-replication-page-2
+// NOTE: No @font-face or font imports included.
+
+// VARIABLES
+$site-width: 1200px;
+$container-padding: 12%;
+$color-primary: #67a58f;
+$color-secondary: #e88b56;
+$color-muted: #777777;
+$color-dark: #222222;
+$bg-muted: #f8f8f8;
+$rounded-xl: 28px;
+$rounded-lg: 12px;
+
+/* Page container base */
+.section-sec-3963__container,
+.section-sec-28b6__cover,
+.section-sec-688b__container,
+.section-carousel_cb26__bar,
+.section-sec-7bc4__container,
+.section-carousel_3539__container {
+  box-sizing: border-box;
+  padding: 48px $container-padding;
+  max-width: $site-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* HERO / INTRO */
+.section-sec-3963__title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: $color-dark;
+  margin-bottom: 8px;
+}
+
+.section-sec-3963__subtitle {
+  text-align: center;
+  color: $color-muted;
+  margin-bottom: 32px;
+}
+
+/* FEATURE CARDS */
+.section-sec-3963__features {
+  gap: 24px;
+}
+
+// Added styles for clickable feature columns (using the anchor tag wrapper)
+.section-sec-3963__feature-column {
+    > a {
+        display: block; // Makes the entire column-link clickable
+        text-decoration: none;
+        color: inherit;
+        
+        &:hover .section-sec-3963__feature-card {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Subtle hover effect
+            transform: translateY(-2px);
+        }
+    }
+}
+
+.section-sec-3963__feature-card {
+  background: #ffffff;
+  border-radius: $rounded-xl;
+  padding: 28px;
+  border: 1px solid #eee;
+  text-align: center;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease; // For hover effect
+}
+
+.section-sec-3963__feature-icon img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.section-sec-3963__feature-title {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: $color-dark; // Ensure title color is dark inside link
+}
+
+/* STATS */
+.section-sec-3963__stats-row {
+  margin-top: 36px;
+  gap: 12px;
+}
+
+.section-sec-3963__stat-number {
+  font-size: 28px;
+  margin: 0;
+  color: $color-dark;
+}
+
+.section-sec-3963__stat-label {
+  font-size: 12px;
+  color: $color-muted;
+  margin-top: 6px;
+}
+
+/* MEDIA & TEXT */
+.section-sec-3963__media-text {
+  margin-top: 36px;
+  align-items: center;
+}
+
+.section-sec-3963__image {
+  border-radius: $rounded-xl;
+  width: 100%;
+  display: block;
+}
+
+/* CTA COVER (orange band) */
+.section-sec-28b6__cover {
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  flex-direction: column; // Added for better centering
+  align-items: center; // Added for better centering
+  justify-content: center;
+  padding: 48px $container-padding;
+}
+
+.section-sec-28b6__title {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.section-sec-28b6__button .wp-block-button__link {
+  background: $color-primary;
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* TWO COLUMN FEATURE */
+.section-sec-688b__two-col {
+  gap: 36px;
+  align-items: center;
+}
+
+.section-sec-688b__image img {
+  width: 100%;
+  border-radius: $rounded-xl;
+  display: block;
+}
+
+.section-sec-688b__percent-title {
+  font-size: 32px;
+  margin: 0;
+  color: $color-dark;
+}
+
+.section-sec-688b__percent-sub {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  color: $color-muted;
+}
+
+/* SAFETY BAR */
+.section-carousel_cb26__bar {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px $container-padding;
+}
+
+/* TEAM GRID */
+.section-sec-7bc4__team-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.section-sec-7bc4__team-sub {
+  text-align: center;
+  color: $color-muted;
+  margin-bottom: 28px;
+}
+
+.section-sec-7bc4__team-grid {
+  gap: 32px;
+}
+
+// Added styles for clickable team columns (using the anchor tag wrapper)
+.section-sec-7bc4__team-col {
+    > a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: translateY(-5px); // Lift effect on hover
+        }
+    }
+}
+
+.section-sec-7bc4__team-image img {
+  width: 100%;
+  border-radius: $rounded-lg;
+  display: block;
+}
+
+.section-sec-7bc4__team-name {
+  margin-top: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: $color-dark; // Ensure name color is dark inside link
+}
+
+.section-sec-7bc4__team-role {
+  text-align: center;
+  color: $color-muted;
+  font-size: 12px;
+}
+
+/* FOOTER / CAROUSEL COVER */
+.section-carousel_3539__container {
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 36px $container-padding;
+  color: #fff;
+}
+
+/* RESPONSIVE adjustments (simple) */
+@media (max-width: 900px) {
+    .wp-block-columns { 
+        // flex-direction: column; // Forces columns to stack on mobile
+    }
+    .section-sec-3963__container,
+    .section-sec-28b6__cover,
+    .section-sec-688b__container,
+    .section-carousel_cb26__bar,
+    .section-sec-7bc4__container,
+    .section-carousel_3539__container {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+}

@@ -1,0 +1,138 @@
+// Variables from the previous section (required for consistent styling)
+$site-width: 1200px;
+$container-padding: 12%;
+$color-primary: #67a58f;
+$color-secondary: #e88b56;
+$color-muted: #777777;
+$color-dark: #222222;
+$bg-muted: #f8f8f8;
+$rounded-xl: 28px;
+$rounded-lg: 12px;
+
+/* --- New Styles for Service List Structure --- */
+
+// 1. Outer Container (Mimics .section-sec-3963__container)
+.thefirstDivAfterHeader {
+    // Ensures the container respects the max-width and centering
+    box-sizing: border-box;
+    // padding: 48px $container-padding;
+    max-width: $site-width;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important; // Override flex properties for the top-level container
+    
+    // Resetting Gutenberg flex/flow classes to act as a standard content wrapper
+    &.wp-block-columns {
+        flex-direction: column !important;
+    }
+}
+
+// 2. Header Styles (Mimics .section-sec-3963__title & __subtitle)
+// .thefirstDivAfterHeader {
+//     .firstDivAfterHeader {
+//         .wp-block-heading:nth-child(1) { // h2 - "When you are more prepared..."
+//             text-align: center;
+//             font-size: 32px;
+//             font-weight: 600;
+//             color: $color-dark;
+//             margin-bottom: 8px;
+//         }
+
+//         .wp-block-heading:nth-child(2) { // h3 - "Sample text..."
+//             text-align: center;
+//             color: $color-muted;
+//             margin-bottom: 32px;
+//             font-size: 18px; // Adjusted for h3
+//             font-weight: 400;
+//         }
+//     }
+// }
+
+
+// 3. Service Card Group (Mimics .section-sec-3963__features)
+.tree-columns-with-button {
+    gap: 24px;
+    margin-bottom: 32px; // Space between the "Droit Civil" group and "Droit Fiscal" group
+    
+    // Ensure it respects column layout
+    display: flex !important;
+    flex-wrap: wrap; 
+}
+
+
+// 4. Individual Service Card (Mimics .section-sec-3963__feature-column > .section-sec-3963__feature-card)
+.tree-columns-with-button > .wp-block-column {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 30%; // Ensure 3 columns fit
+    
+    // The inner styles for the card look
+    > .wp-block-heading { // The H4 containing the main category link
+    // padding: 28px 28px 12px; // Card top padding
+        margin-bottom: 0;
+        text-align: left;
+        
+        > a {
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: $color-dark;
+            font-weight: 700;
+        }
+    }
+    
+    // Style the actual card container (the column itself acts as the card)
+    background: #ffffff;
+    border-radius: $rounded-xl;
+    padding: 0;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); // Subtle hover effect
+        transform: translateY(-2px);
+    }
+    
+    // Latest Post List Styling
+    .wp-block-latest-posts {
+        list-style-type: none; // Remove default dots/numbers
+        margin: 0;
+        padding: 0 28px 28px; // Card bottom padding
+        
+        li {
+            padding: 8px 0;
+            // border-bottom: 1px solid #f0f0f0;
+            
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        
+        .wp-block-latest-posts__post-title{
+            // text-decoration: none;
+            // color: $color-muted;
+            // font-size: 15px;
+            
+            &:hover {
+                color: $color-primary;
+            }
+            
+        }
+    }
+}
+
+
+/* RESPONSIVE adjustments */
+@media (max-width: 900px) {
+    .tree-columns-with-button {
+        flex-direction: column !important;
+    }
+    .thefirstDivAfterHeader {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .tree-columns-with-button > .wp-block-column {
+        min-width: 100%;
+    }
+}
