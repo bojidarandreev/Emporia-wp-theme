@@ -61,6 +61,7 @@
   }
   &-button {
     // align-self: center;
+    flex-wrap: wrap; // UC-06: prevent overflow on mobile
     > * {
       color: colors.$font-color-4;
       border-radius: $border-radius-element;
@@ -76,6 +77,15 @@
       letter-spacing: 0.1rem;
       text-transform: uppercase;
       text-decoration: none;
+      // UC-06: unified hover — white text, orange bg, subtle scale
+      transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+      &:hover,
+      &:focus-visible {
+        background-color: colors.$font-color-3; // orange accent
+        color: colors.$font-color-4;            // white
+        transform: scale(1.04);
+        text-decoration: none;
+      }
       a {
         color: inherit;
         line-height: inherit;
@@ -90,6 +100,14 @@
     }
     &-b {
       background-color: colors.$font-color-2;
+    }
+    // UC-06 mobile: fix button clipping — reduce large right margin
+    @media (max-width: 768px) {
+      > * {
+        margin: 0.75rem 0 0.5rem 0;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
     }
   }
 }
@@ -264,5 +282,54 @@
     > .wp-block-group__inner-container > .wp-block-heading + p {
       padding-bottom: 1.25rem;
     }
+  }
+}
+
+// UC-02: Override to look like a simple list — keep separators, reduce oversized numbers
+// Must appear AFTER the main block above so same-specificity rules win the cascade
+.entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered {
+  --emporia-numbered-number-col: 2rem;
+  --emporia-numbered-gutter: 0.6rem;
+}
+.entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
+  > .wp-block-group__inner-container
+  > .wp-block-heading {
+  grid-template-columns: 2rem minmax(0, 1fr);
+  column-gap: 0.6rem;
+  align-items: baseline;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-weight: $font-weight-regular;
+}
+.entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
+  > .wp-block-group__inner-container
+  > .wp-block-heading::before {
+  font-size: 0.875rem; // subtle marker (was clamp(2.4rem, 5vw, 4rem))
+  font-weight: $font-weight-bold;
+  color: colors.$font-color-2;
+  line-height: 1.6;
+}
+.entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
+  > .wp-block-group__inner-container
+  > .wp-block-heading
+  + p {
+  padding-left: calc(var(--emporia-numbered-pad-x) + 2rem + 0.6rem);
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+}
+@media (max-width: 768px) {
+  .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered {
+    --emporia-numbered-number-col: 1.5rem;
+    --emporia-numbered-gutter: 0.5rem;
+  }
+  .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
+    > .wp-block-group__inner-container
+    > .wp-block-heading {
+    grid-template-columns: 1.5rem minmax(0, 1fr);
+    column-gap: 0.5rem;
+  }
+  .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
+    > .wp-block-group__inner-container
+    > .wp-block-heading
+    + p {
+    padding-left: calc(var(--emporia-numbered-pad-x) + 1.5rem + 0.5rem);
   }
 }
