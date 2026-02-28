@@ -1,0 +1,268 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+/*Header Page Widget*/
+.cCwidgetTakesH1andMetaDescription {
+  .header-page-widget {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 0 16rem 0;
+
+    @media (max-width: 768px) {
+      padding-left: 5%;
+      padding-right: 5%;
+    } 
+  }
+}
+.header-page-widget {
+  color: colors.$font-color-4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // text-align: left;
+  gap: 0.3rem;
+  max-width: 60%;
+   @media (max-width: 768px) {
+    padding-left: 5%;
+    padding-right: 5%;
+    max-width: 100%;
+    
+  }
+
+
+  &-title {
+    font-size: 1.55rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    @media (max-width: 768px) {
+      line-height: 1.6rem !important;
+      text-align: left;
+    }
+  }
+  &-subtitle {
+    font-weight: 400;
+    font-size: 4.5rem;
+    line-height: 1.1;
+    text-align: left;
+    @media (max-width: 768px) {
+      font-size: 3rem;
+      line-height: 1.1;
+    }
+  }
+  &-description {
+    font-size: $h6-size;
+    line-height: 1.6;
+    font-weight: $font-weight-regular;
+    letter-spacing: 0.05rem;
+    margin-bottom: 0.1rem;
+    @media (max-width: 768px) {
+      text-align: left;
+    }
+  }
+  &-button {
+    // align-self: center;
+    > * {
+      color: colors.$font-color-4;
+      border-radius: $border-radius-element;
+      margin: 30px 40px 0.6rem 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 8px 21px;
+      line-height: 1.6;
+      font-size: $h7-size;
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      a {
+        color: inherit;
+        line-height: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        letter-spacing: inherit;
+        text-transform: inherit;
+      }
+    }
+    &-a {
+      background-color: colors.$font-color-2;
+    }
+    &-b {
+      background-color: colors.$font-color-2;
+    }
+  }
+}
+
+.widget-area .widget {
+  padding: 0!important;
+  background-color: colors.$font-color-4!important;
+}
+.inside-right-sidebar {
+  .upw-posts.hfeed {
+    article {
+      padding: 40px;
+      border-radius: 30px;
+      background-color: colors.$font-color-4;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      margin-bottom: $space-xxl;
+      border-bottom: unset;
+      header {
+        display: flex;
+        flex-direction: column;
+        gap: $space-sm;
+
+        .entry-title {
+          order: 1;
+          margin: 0;
+          // a {
+          //   color: colors.$font-color-1!important;
+          // }
+
+          h4 {
+            font-size: $h5-size;
+            line-height: $base-line-height;
+            margin: 0;
+            
+          }
+
+          a {
+            color: colors.$font-color-1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: colors.$font-color-5;
+            }
+          }
+        }
+
+        .entry-image {
+          order: 2;
+          width: 100%;
+          max-height: 12rem;
+          overflow: hidden;
+          border-radius: 30px;
+
+          a {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+
+          &:hover img {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .entry-summary {
+        margin-top: $space-sm;
+
+        p {
+          font-size: $small-size;
+          line-height: $base-line-height;
+          margin-bottom: $space-xs;
+
+          .more-link {
+            color: colors.$font-color-2;
+            text-decoration: none;
+            font-weight: $font-weight-medium;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: colors.$font-color-5;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Reusable numbered H3 + paragraph component (services + posts) */
+.entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered {
+  --emporia-numbered-border: rgba(24, 40, 51, 0.14);
+  --emporia-numbered-bg-a: rgba(194, 232, 233, 0.22);
+  --emporia-numbered-bg-b: rgba(249, 250, 251, 0.96);
+  --emporia-numbered-number-col: clamp(3.75rem, 8vw, 6.75rem);
+  --emporia-numbered-gutter: clamp(0.9rem, 2.2vw, 1.85rem);
+  --emporia-numbered-pad-x: clamp(1rem, 2.8vw, 2rem);
+
+  margin: clamp(1.5rem, 3.8vw, 2.5rem) 0;
+  border: 1px solid var(--emporia-numbered-border);
+  border-radius: $border-radius-md;  // H-06: was 1.4rem magic value → token ($border-radius-md = 1rem)
+  overflow: hidden;
+  background: linear-gradient(
+    105deg,
+    var(--emporia-numbered-bg-a) 0%,
+    var(--emporia-numbered-bg-b) 44%,
+    colors.$font-color-4 100%
+  );
+
+  > .wp-block-group__inner-container {
+    counter-reset: emporia-numbered-step;
+  }
+
+  > .wp-block-group__inner-container > .wp-block-heading {
+    counter-increment: emporia-numbered-step;
+    display: grid;
+    grid-template-columns: var(--emporia-numbered-number-col) minmax(0, 1fr);
+    column-gap: var(--emporia-numbered-gutter);
+    align-items: center;
+    margin: 0;
+    padding: clamp(1.35rem, 3vw, 2rem) var(--emporia-numbered-pad-x) 0.6rem;
+    color: colors.$font-color-1;
+    font-size: clamp(1.22rem, 2.05vw, 1.95rem);
+    line-height: 1.2;
+    font-weight: $font-weight-bold;
+  }
+
+  > .wp-block-group__inner-container > .wp-block-heading:not(:first-child) {
+    border-top: 1px solid var(--emporia-numbered-border);
+  }
+
+  > .wp-block-group__inner-container > .wp-block-heading::before {
+    content: counter(emporia-numbered-step, decimal-leading-zero);
+    grid-column: 1;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    font-weight: $font-weight-bold;
+    color: #131d24;
+  }
+
+  > .wp-block-group__inner-container > .wp-block-heading + p {
+    margin: 0;
+    padding: 0 var(--emporia-numbered-pad-x) clamp(1.4rem, 2.7vw, 1.95rem);
+    padding-left: calc(
+      var(--emporia-numbered-pad-x) +
+      var(--emporia-numbered-number-col) +
+      var(--emporia-numbered-gutter)
+    );
+    color: #21313f;
+    font-size: clamp(1rem, 1.28vw, 1.24rem);
+    line-height: 1.58;
+  }
+
+  @media (max-width: 768px) {
+    --emporia-numbered-number-col: 3.25rem;
+    --emporia-numbered-gutter: 0.85rem;
+
+    > .wp-block-group__inner-container > .wp-block-heading {
+      padding-top: 1.15rem;
+      padding-bottom: 0.4rem;
+    }
+
+    > .wp-block-group__inner-container > .wp-block-heading + p {
+      padding-bottom: 1.25rem;
+    }
+  }
+}

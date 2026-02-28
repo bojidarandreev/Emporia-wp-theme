@@ -1,0 +1,668 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+@use "../tools/breakpoints" as bp;
+
+// --- Blog list page styles ---
+.blog,
+.archive {
+  .category-temoignage {
+    display: none;
+  }
+  .inside-article {
+    // Hide default meta info on blog list
+    .byline,
+    footer.entry-meta,
+    .tags-links {
+      display: none;
+    }
+  }
+  #content-header,
+  .no-results {
+    display: none;
+  }
+  .site-content {
+    justify-content: space-between;
+    .content-area {
+      width: 70%;
+    }
+    .widget-area {
+      width: 25%;
+    }
+  }
+  .site-main {
+    // Keep native archive entries visible unless AML markup is present.
+    &:has(.alm-listing.alm-ajax) > article:not(:first-child) {
+      display: none;
+    }
+
+    .alm-listing.alm-ajax > article:first-child {
+      display: none;
+    }
+
+    .alm-btn-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .alm-load-more-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8em;
+      padding: $space-sm $space-lg;
+      padding-right: $space-xl;
+      border: 2px solid colors.$font-color-2;
+      border-radius: $border-radius-button;
+      background: transparent;
+      color: colors.$font-color-2;
+      font-size: $body-size;
+      cursor: pointer;
+
+      &.loading {
+        color: colors.$font-color-6;
+        background-color: transparent !important;
+
+        &::after {
+          animation: arrows-step 2.5s infinite;
+          pointer-events: none;
+        }
+
+        > * {
+          opacity: 0 !important;
+        }
+      }
+
+      &:not(.done)::after {
+        content: "❯";
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%) rotate(90deg);
+        font-size: 3rem;
+        font-weight: $font-weight-light;
+        display: inline-block;
+        letter-spacing: 3px;
+        color: colors.$font-color-2;
+      }
+
+      &.done::after {
+        content: "";
+        animation: none;
+        opacity: 0;
+      }
+
+      &:hover {
+        background: colors.$font-color-2;
+        color: colors.$font-color-4;
+      }
+    }
+
+    @keyframes arrows-step {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      50% { opacity: 0; }
+      75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    
+  
+    article {
+      min-height: $blog-card-min-height;
+      margin-bottom: $space-section;
+      @media (max-width: 768px) {
+        margin-bottom: $space-xl;
+      }
+      .inside-article {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $space-xs;
+        padding: $space-lg 0;
+        position: relative;
+
+        .entry-header {
+          width: 55%;
+          margin-bottom: $space-sm;
+           @media (max-width: 768px) {
+            width: 100%;
+          }
+          h2 {
+            font-size: $h3-size;
+            line-height: $base-line-height-smaller;
+             @media (max-width: 768px) {
+              font-size: $h4-size;
+              line-height: $base-line-height-small;
+              font-weight: $font-weight-medium;
+             }
+          }
+        }
+
+        .post-image {
+          width: 40%;
+          overflow: hidden;
+          border-radius: $border-radius-element;
+          position: absolute;
+          margin-top: 0;
+          height: calc(100% - #{$space-lg * 2});
+          max-height: $blog-image-max-height;
+           @media (max-width: 768px) {
+            position: relative;
+            width: 100%;
+            max-height: 15rem;
+          }
+
+          a {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+
+          &:hover img {
+            transform: scale(1.05);
+          }
+        }
+
+        .entry-meta {
+          justify-content: flex-end;
+          width: 55%;
+          margin-bottom: $space-sm;
+          color: colors.$font-color-2;
+          font-size: $small-size;
+          font-weight: $font-weight-medium;
+          display: none;
+        }
+
+        .entry-summary {
+          width: 55%;
+          display: flex;
+          flex-direction: column;
+          margin-top: 0;
+          @media (max-width: 768px) {
+            width: 100%;
+          }
+
+          p {
+            display: flex;
+            flex-direction: column;
+          }
+
+          // R-02: Hide WP default .more-link — custom .read-more button is the primary CTA
+        a.more-link {
+          display: none;
+        }
+
+        .read-more {
+            background-color: colors.$font-color-2;
+            color: colors.$font-color-4;
+            padding: $space-sm $space-md;
+            margin-top: calc($space-md * 2);
+            border-radius: $border-radius-button;
+            text-decoration: none;
+            border: none;
+            text-transform: uppercase;
+            font-weight: $font-weight-bold;
+            display: inline-block;
+            align-self: flex-start;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+              background-color: colors.$font-color-5;
+              color: colors.$font-color-4;
+              transform: translateY(-2px);
+              box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            &:active {
+              transform: translateY(0);
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0)
+              );
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+
+            &:hover::after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      // Even articles
+      &:nth-child(even) {
+        .inside-article {
+          .entry-header {
+            order: 1;
+            margin-left: 45%;
+             @media (max-width: 768px) {
+            margin-left: unset;
+          }
+          }
+          .post-image {
+            order: 2;
+            left: 0;
+          }
+          .entry-meta {
+            order: 2;
+            margin-left: 45%;
+            margin-left: 0;
+             
+          }
+          .entry-summary {
+            order: 3;
+            margin-left: 45%;
+            margin-top: 0.3rem;
+            @media (max-width: 768px) {
+            margin-left: unset;
+          }
+            .read-more {
+              align-self: flex-end;
+            }
+          }
+        }
+      }
+
+      // Odd articles
+      &:nth-child(odd) {
+        .inside-article {
+          .entry-header {
+            order: 1;
+            margin-right: 45%;
+             @media (max-width: 768px) {
+            margin-right: unset;
+          }
+            
+          }
+          .post-image {
+            order: 1;
+            right: 0;
+          }
+          .entry-meta {
+            order: 2;
+            margin-right: 45%;
+          }
+          .entry-summary {
+            order: 3;
+            margin-right: 45%;
+             @media (max-width: 768px) {
+            margin-right: unset;
+          }
+            .read-more {
+              align-self: flex-start;
+            }
+          }
+        }
+      }
+
+    }
+
+    > article img,
+    .alm-listing article img {
+      border-radius: $border-radius-element;
+    }
+
+    .navigation.pagination,
+    .paging-navigation {
+      display: none;
+    }
+  }
+
+  .entry-summary a,
+  .entry-content a {
+    color: colors.$font-color-2;
+    text-decoration: underline;
+
+    &:hover {
+      color: colors.$font-color-3;
+      text-decoration: none;
+    }
+  }
+}
+
+// --- Single Post page styles ---
+.single-post {
+  .entry-content {
+    max-width: $content-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .entry-content .wp-block-image.alignwide,
+  .entry-content .wp-block-image.alignfull,
+  .entry-content .featured-image {
+    max-width: none;
+  }
+
+  .site.container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .site.container #content-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    background-color: colors.$background-color-3; // Light background
+    margin-bottom: 2.75rem;
+    @include bp.sm {
+        padding: $space-md;
+        margin-bottom: 0.05rem;
+    }
+    @include bp.md {
+        text-align: left;
+        margin-bottom: 0.75rem;
+    }
+    
+    // Subtitle (assuming it's a P with a STRONG tag)
+    p:has(strong) {
+      font-weight: $font-weight-light;
+      line-height: $base-line-height-small;
+      min-width: 50%;
+      margin: 0 auto $space-lg;
+      color: colors.$font-color-1;
+      
+    //   @include bp.md {
+    //         padding-right: 3vw;
+    // padding-left: 3vw;
+
+    // }
+    }
+
+    .entry-title {
+      min-width: 70%;
+      font-size: $h3-size;
+        padding-right: 5vw;
+        padding-left: 5vw;
+      // Intentional override: single-post titles are bolder than global h1 for article emphasis.
+      font-weight: $font-weight-bold;
+      color: colors.$font-color-1;
+      line-height: $base-line-height-smaller;
+      margin-bottom: $space-md;
+      @include bp.sm {
+        font-size: $h2-size;
+        padding-right: 3vw;
+        padding-left: 3vw;
+        line-height: $base-line-height-smaller;
+    }
+      @include bp.md {
+      font-size: $h1-size;
+      padding-right: 10%;
+      padding-left: 10%;
+      line-height: $base-line-height-smaller;
+    }
+    
+    }
+
+    .featured-image {
+      max-width: unset;
+      width: calc(
+        100vw - (100vw - 100%)
+      ); // container spans full viewport width
+      max-height: 789px;
+      overflow: hidden; // prevent overflow if image is taller
+
+      img {
+        display: block;
+        width: calc(100% - (2 * #{$space-md}));
+        height: auto; // proportional scaling
+        max-height: 789px;
+        object-fit: cover; // crop if image aspect ratio is taller
+        margin-left: $space-md;
+        margin-right: $space-md;
+        max-width: none;
+        border-radius: $border-radius-md;
+      }
+    }
+
+    .entry-meta {
+      // Mobile-first: single-column flex layout
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: $space-md;
+      color: colors.$font-color-1;
+      width: 100%;
+      padding: $space-md; // Add some horizontal padding
+      // padding-left: 10%;
+      // padding-right: 10%; 
+      
+      // Desktop: 3-column grid layout
+      @include bp.md {
+        //display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+        align-items: anchor-center;
+        justify-content: space-between;
+
+        .byline {
+          grid-column: 1;
+          grid-row: 1;
+          justify-self: start; // Align to the left of the cell
+        }
+
+        .posted-on {
+          grid-column: 1;
+          grid-row: 2;
+          justify-self: start; // Align to the left of the cell
+        }
+
+        // Assuming a <p> element is a direct child of .entry-meta
+        > p {
+          display: none;
+          grid-column: 2;
+          grid-row: 1 / span 2;
+          text-align: left;
+          padding: 0 $space-lg;
+        }
+
+        .tags-links {
+          grid-column: 3;
+          grid-row: 1 / span 2;
+          justify-self: end; // Align to the right of the cell
+        }
+      }
+
+      .byline {
+        display: flex; // Keep flex for the container
+        align-items: center;
+        gap: $space-sm;
+        font-size: $small-size;
+        color: colors.$font-color-2;
+
+        .author-vcard img {
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+        }
+
+        // --- New Grid Layout for the author link ---
+        .author .url {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          grid-template-rows: auto auto;
+          align-items: center;
+          justify-items: left;
+          gap: 0 $space-sm; // Vertical gap 0, horizontal gap from variable
+          text-decoration: none;
+          color: inherit;
+
+          > .avatar {
+            width: 60px;
+            height: 60px;
+            grid-column: 1;
+            grid-row: 1 / span 2; // Span both rows
+            border: 2px solid #cdcdcd;
+          }
+
+          > .author-name {
+            grid-column: 2;
+            grid-row: 1;
+            margin-left: 0;
+            font-size: $h6-size;
+            font-weight: $font-weight-bold;
+          }
+
+          > .posted-on {
+            grid-column: 2;
+            grid-row: 2;
+            font-size: $h6-size;
+            font-weight: $font-weight-regular;
+            color: colors.$font-color-6;
+            .entry-date.published {
+              font-style: normal;
+            }
+          }
+        }
+      }
+      
+      .tags-links {
+        
+        a {
+          color: colors.$font-color-2;
+          background-color: transparent;
+          border-radius: $border-radius-button;
+          border: 2px solid colors.$font-color-2;
+          text-decoration: none;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          font-size: $small-size;;
+          margin-left: 0.7rem;
+
+          &:hover {
+            background-color: colors.$font-color-2;
+            color: colors.$font-color-4;
+          }
+        }
+        
+        @media (max-width: 900px) {
+          display: none;
+        }
+      }
+    }
+  }
+  .site-content, #content-header h1, #content-header p:has(strong) {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+
+  // Responsive adjustments
+  @include bp.md {
+    #content-header {
+      padding: $space-lg;
+
+      .entry-title {
+        font-size: $h2-size;
+      }
+
+      p:has(strong) {
+        //font-size: $h2-size;
+      }
+    }
+  }
+
+  @include bp.sm {
+    #content-header {
+      padding: $space-md;
+
+      .entry-title {
+        font-size: $h3-size;
+      }
+
+      p:has(strong) {
+        //font-size: $h2-size;
+      }
+
+      .entry-meta {
+        gap: $space-sm;
+      }
+    }
+  }
+}
+
+// R-01: Service/page template content max-width (same constraint as .single-post)
+.page:not(.home) {
+  .entry-content {
+    max-width: $content-max-width;  // 50rem = 800px
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// R-03: Single post inline content links — brand green instead of browser default blue
+.single-post {
+  .entry-content a:not(.wp-block-button__link):not(.more-link):not(.read-more) {
+    color: colors.$font-color-2;
+    text-decoration: underline;
+
+    &:hover {
+      color: colors.$font-color-3;
+      text-decoration: none;
+    }
+  }
+}
+
+// Keep single-post hero blocks full-width and ordered before meta.
+.single-post {
+  .site.container #content-header {
+    align-items: stretch;
+
+    .entry-title,
+    > p {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+
+    .entry-title {
+      order: 1;
+    }
+
+    > p {
+      order: 2;
+    }
+
+    .featured-image {
+      order: 3;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+
+      img {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+      }
+    }
+
+    .entry-meta {
+      order: 4;
+    }
+  }
+}
