@@ -292,8 +292,8 @@
   > .wp-block-group__inner-container
   > .wp-block-heading {
   display: block; // override main block's display:grid — no number column needed
-  font-size: clamp(1rem, 1.5vw, 1.35rem);
-  font-weight: $font-weight-regular;
+  font-size: 1rem;              // 16px — matches .schema-faq-question
+  font-weight: $font-weight-bold; // 700 — matches .schema-faq-question
 }
 .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
   > .wp-block-group__inner-container
