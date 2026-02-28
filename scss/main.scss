@@ -1,45 +1,5 @@
-@use "_variables.scss" as *;
-@use "normalizer2.scss";
-@use "fonts.scss";
-@use "colors.scss";
-@use "header.scss";
-@use "page.scss";
-@use "widgets.scss";
-@use "mail-form.scss";
-@use "footer.scss";
-@use "post.scss";
-@use "blog.scss";
-@use "team.scss";
-@use "layout-fix.scss";
-@use "gpTemplate.scss";
-@use "geminiTemplate.scss";
-body.wp-child-theme-ChihldThemeGeneratePress {
-  display: flex;
-  flex-direction: column;
-}
-.breadcrumbs {
-  order: 1;
-  a,
-  strong {
-    color: colors.$font-color-2;
-  }
-}
-header.site-header {
-  order: 0;
-}
-.site {
-  &.container {
-    order: 2;
-    max-width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-  &.container,
-  div.inside-article {
-    background-color: colors.$font-color-4;
-  }
-}
-
-.site-footer {
-  order: 3;
-}
+@use "settings";
+@use "tools";
+@use "base";
+@use "components";
+@use "pages";

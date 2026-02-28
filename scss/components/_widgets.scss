@@ -285,51 +285,26 @@
   }
 }
 
-// UC-02: Override to look like a simple list — keep separators, reduce oversized numbers
-// Must appear AFTER the main block above so same-specificity rules win the cascade
-.entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered {
-  --emporia-numbered-number-col: 2rem;
-  --emporia-numbered-gutter: 0.6rem;
-}
+// UC-02: Remove CSS counter numbers — headings are full-width, no grid column for "01/02/03"
+// Must appear AFTER the main block above so same-specificity rules win the cascade.
+// Note: Gutenberg native <ol> lists use <li> HTML counters and are unaffected.
 .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
   > .wp-block-group__inner-container
   > .wp-block-heading {
-  grid-template-columns: 2rem minmax(0, 1fr);
-  column-gap: 0.6rem;
-  align-items: baseline;
+  display: block; // override main block's display:grid — no number column needed
   font-size: clamp(1rem, 1.5vw, 1.35rem);
   font-weight: $font-weight-regular;
 }
 .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
   > .wp-block-group__inner-container
   > .wp-block-heading::before {
-  font-size: 0.875rem; // subtle marker (was clamp(2.4rem, 5vw, 4rem))
-  font-weight: $font-weight-bold;
-  color: colors.$font-color-2;
-  line-height: 1.6;
+  content: none; // remove the "01, 02, 03" CSS counter entirely
 }
 .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
   > .wp-block-group__inner-container
   > .wp-block-heading
   + p {
-  padding-left: calc(var(--emporia-numbered-pad-x) + 2rem + 0.6rem);
+  // no number column to indent past — align with the heading text
+  padding-left: var(--emporia-numbered-pad-x);
   font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-}
-@media (max-width: 768px) {
-  .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered {
-    --emporia-numbered-number-col: 1.5rem;
-    --emporia-numbered-gutter: 0.5rem;
-  }
-  .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
-    > .wp-block-group__inner-container
-    > .wp-block-heading {
-    grid-template-columns: 1.5rem minmax(0, 1fr);
-    column-gap: 0.5rem;
-  }
-  .entry-content .wp-block-group.emporia-h3p-group.emporia-h3p-group--numbered
-    > .wp-block-group__inner-container
-    > .wp-block-heading
-    + p {
-    padding-left: calc(var(--emporia-numbered-pad-x) + 1.5rem + 0.5rem);
-  }
 }

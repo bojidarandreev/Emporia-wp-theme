@@ -1,0 +1,156 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+
+/* Polylang switcher: same visual size as main nav items */
+.inside-header .main-navigation .lang-item > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.15rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1.2;
+}
+
+.inside-header .main-navigation .lang-item > a::before {
+  content: "";
+  display: inline-block;
+  width: 1.3em;
+  height: 0.92em;
+  border-radius: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Slightly tighten distance from left menu item to language switcher */
+.inside-header .main-navigation .main-nav > ul > li.lang-item {
+  margin-left: -0.2rem;
+}
+
+.inside-header .main-navigation .lang-item-en > a::before {
+  background-image: url("../../assets/flags/en.svg");
+}
+
+.inside-header .main-navigation .lang-item-fr > a::before {
+  background-image: url("../../assets/flags/fr.svg");
+}
+
+.inside-header .main-navigation .lang-item img {
+  display: none !important;
+}
+
+.inside-header .main-navigation .lang-item-en > a::after {
+  content: "EN";
+  font-size: 1em;
+  font-weight: inherit;
+  letter-spacing: 0.02em;
+}
+
+.inside-header .main-navigation .lang-item-fr > a::after {
+  content: "FR";
+  font-size: 1em;
+  font-weight: inherit;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --mobile-menu-panel-width: min(#{$mobile-menu-panel-width}, 420px);
+    --mobile-menu-panel-left: calc(100vw - var(--mobile-menu-panel-width));
+    --mobile-menu-top-row-left: calc(var(--mobile-menu-panel-left) + 0.75rem);
+    --mobile-menu-lang-left: calc(var(--mobile-menu-top-row-left) + 10.4rem);
+    /* Set to 0 later to disable mobile flag quickly (revert switch). */
+    --mobile-lang-flag-enabled: 1;
+  }
+
+  /* Closed menu: keep contact icons next to the open button; hide language switcher. */
+  .inside-header .header-widget .mobileMenuStickedUp {
+    position: absolute !important;
+    top: 0.8rem;
+    right: 4.1rem !important;
+    left: auto !important;
+  }
+
+  #site-navigation:not(.toggled) .lang-item {
+    display: none !important;
+  }
+
+  /* Ensure contact icons and language switch have the same touch height as the close button. */
+  .inside-header .header-widget .mobileMenuStickedUp .widget-item a,
+  #site-navigation .lang-item > a {
+    min-width: 48px;
+    min-height: 48px;
+    height: 48px;
+  }
+
+  /* Open menu: align contact icons with drawer content left edge. */
+  .mobile-menu-open .inside-header .header-widget .mobileMenuStickedUp {
+    position: fixed !important;
+    left: var(--mobile-menu-top-row-left) !important;
+    right: auto !important;
+    top: 0.8rem;
+    z-index: 1003;
+  }
+
+  .mobile-menu-open .inside-header .header-widget .mobileMenuStickedUp .mobileMenuIconsWidget {
+    justify-content: flex-start;
+    gap: 0.45rem;
+  }
+
+  /* Open menu: place language toggle between contact links and the X button. */
+  .mobile-menu-open #site-navigation.toggled .lang-item {
+    display: block !important;
+    position: fixed;
+    top: 0.8rem;
+    left: var(--mobile-menu-lang-left);
+    width: auto !important;
+    margin: 0;
+    list-style: none;
+    z-index: 1004;
+    border-left: 1px solid rgba(242, 248, 252, 0.45);
+    padding-left: 0.65rem;
+  }
+
+  .mobile-menu-open #site-navigation.toggled .main-nav > ul > li.lang-item > a {
+    width: auto !important;
+    justify-content: flex-start !important;
+  }
+
+  .mobile-menu-open #site-navigation.toggled .lang-item > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 0.38rem;
+    white-space: nowrap;
+    padding: 0 0.55rem 0 0.35rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    line-height: 1;
+    color: colors.$font-color-4;
+    font-size: 0.92rem;
+  }
+
+  .mobile-menu-open #site-navigation.toggled .lang-item > a::before {
+    content: "";
+    display: inline-block;
+    width: calc(18px * var(--mobile-lang-flag-enabled));
+    height: calc(13px * var(--mobile-lang-flag-enabled));
+    margin-right: 0.08rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+  }
+
+  .mobile-menu-open #site-navigation.toggled .lang-item-en > a::after,
+  .mobile-menu-open #site-navigation.toggled .lang-item-fr > a::after {
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+  }
+}

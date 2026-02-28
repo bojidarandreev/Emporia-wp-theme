@@ -1,0 +1,31 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+
+// Breadcrumbs spacing (match /actualites/)
+// UC-08: Align breadcrumbs to same rails as header + footer
+.breadcrumbs {
+  margin-bottom: $space-lg;
+  padding-top: $space-lg;
+  // Replace vw-based offset with proper max-width centering to match GP grid container
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;  // matches GP grid-container default sides padding
+  padding-right: 20px;
+  box-sizing: border-box;
+  &:last-child {
+    display: none;
+  }
+  // Replace the "/" separator with "❯" using CSS only
+  a + * {
+    position: relative;
+  }
+  a + *::before {
+    content: '❯';
+    margin: 0 0.5em;
+    color: colors.$font-color-5;
+    font-size: 1em;
+    vertical-align: middle;
+    /* Optionally hide the original slash if it's a text node */
+  }
+}

@@ -1,0 +1,48 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+
+.site-footer {
+  color: colors.$font-color-4;
+  h2 {
+    text-align: left;
+  }
+  // UC-07: Footer side padding matches header (GP grid-container rails)
+  .footer-widgets {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: colors.$background-color-1;
+    border-radius: $border-radius-md;
+    .inside-footer-widgets {
+      a {
+        color: colors.$font-color-4;
+      }
+      > div aside,
+      .textwidget {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .site-info {
+    background-color: colors.$background-color-3;
+    .copyright-bar{
+      color: colors.$font-color-1;
+    }
+  }
+  height: 100%;
+  padding-bottom: 0;
+  .main-title a {
+    visibility: hidden;
+    font-size: 0.1px;
+    &::before {
+      visibility: visible !important;
+
+      content: "\e900";
+      font-family: "Icomoon";
+      font-size: 3.55rem;
+      line-height: 1.2;
+      font-weight: 300;
+      color: colors.$font-color-4;
+    }
+  }
+}

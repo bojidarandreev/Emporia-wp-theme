@@ -1,0 +1,6 @@
+@use "../settings/tokens" as t;
+
+:root {
+  --scrollbar-width: #{t.$css-var__scrollbar_width};
+  --header-height: #{t.$css-var__header_height};
+}

@@ -53,12 +53,14 @@
       gap: 1.8em;
       padding: $space-sm $space-lg;
       padding-right: $space-xl;
-      border: 2px solid colors.$font-color-2;
+      // UC-05c: remove border; hover = scale only
+      border: none;
       border-radius: $border-radius-button;
       background: transparent;
       color: colors.$font-color-2;
       font-size: $body-size;
       cursor: pointer;
+      transition: transform 0.2s ease;
 
       &.loading {
         color: colors.$font-color-6;
@@ -92,9 +94,17 @@
         opacity: 0;
       }
 
+      // UC-05c: hover = subtle scale only (no green bg, no border)
       &:hover {
-        background: colors.$font-color-2;
-        color: colors.$font-color-4;
+        background: transparent;
+        color: colors.$font-color-2;
+        transform: scale(1.06);
+      }
+
+      &:focus-visible {
+        outline: 2px solid colors.$font-color-2;
+        outline-offset: 4px;
+        border-radius: $border-radius-button;
       }
     }
 
@@ -143,11 +153,17 @@
           border-radius: $border-radius-element;
           position: absolute;
           margin-top: 0;
-          height: calc(100% - #{$space-lg * 2});
-          max-height: $blog-image-max-height;
+          // UC-05b: stretch image to full article height using top/bottom anchor
+          top: $space-lg;
+          bottom: $space-lg;
+          height: auto;
+          max-height: none;
            @media (max-width: 768px) {
             position: relative;
             width: 100%;
+            top: auto;
+            bottom: auto;
+            height: auto;
             max-height: 15rem;
           }
 
@@ -619,6 +635,31 @@
       color: colors.$font-color-3;
       text-decoration: none;
     }
+  }
+}
+
+// UC-05a: Blog/archive page container — match header horizontal rails (same padding as GP grid-container)
+// At wide/iPad-Pro viewports, 10% padding is too wide vs the header's fixed 20px sides padding.
+.blog .site.container,
+.archive .site.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+// UC-10: Service page — align #content-header H1 + intro paragraph with article content column
+.page:not(.home):not(.single-post) {
+  .site-main #content-header {
+    max-width: $content-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

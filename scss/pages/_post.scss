@@ -1,0 +1,680 @@
+﻿@use "../settings/colors";
+@use "../settings/vars" as *;
+
+$toc-toggle-contrast-color: #2f5f51;
+
+.single .site-content {
+  .content-area {
+    .site-main {
+      margin-top: 0;
+        .post {
+          .inside-article {
+          padding: 0;
+            .entry-content {
+              margin-top: 0;
+              }
+          }
+        } 
+      }
+      
+    }
+    .widget-area.is-right-sidebar {
+        .inside-right-sidebar {
+          margin-top: 0;
+          .content-item {
+            margin-top: 0;
+          }
+        }
+      }
+}
+
+
+.entry-meta {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5em 1em;
+  position: relative;
+
+  // Left column: Avatar and author/date
+  .byline {
+    order: 1;
+    min-width: 16%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    // Avatar and author name in a row
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        border: 2px solid #eee;
+      }
+      .author-name {
+        font-weight: 700;
+        font-size: 1em;
+        color: #222;
+        margin-left: 0.3em;
+        display: block;
+      }
+    }
+    // Ensure posted-on is directly under author-name
+  }
+  span.posted-on {
+    width: 100%;
+    order: 4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+
+    padding-left: 4.5rem;
+    margin-top: -5.9em;
+    @media (max-width: 768px) {
+      padding-left: 4.5rem;
+      margin-top: -5.7em;
+    }
+    .entry-date.published {
+      font-size: 0.95em;
+      color: #888;
+      font-style: italic;
+      margin-top: 0;
+      @media (max-width: 768px) {
+      font-size: 0.73em;
+    }
+      &::before {
+        content: "PubliÃ© le ";
+        font-style: normal;
+        color: #888;
+      }
+    }
+  }
+
+  // Right column: tags
+  .tags-links {
+    order: 3;
+    margin-left: auto;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: 0.95em;
+    color: #666;
+    .icon-tags {
+      display: none;
+    }
+    a {
+      background-color: colors.$font-color-4;
+      color: colors.$font-color-1;
+      padding: $space-sm $body-size;
+      // margin: 1rem;
+      border-radius: $border-radius-button;
+      text-decoration: none;
+      border: none;
+      // text-transform: uppercase;
+      font-weight: $font-weight-bold;
+      display: inline-block;
+      align-self: flex-start;
+      transition: all 0.3s ease;
+      // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        background-color: colors.$font-color-4;
+        color: colors.$font-color-1;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        text-decoration: none;
+      }
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  //---READING TIME WIDGET IH POST HEADER
+  p {
+    display: none;
+    width: 30%;
+    order: 2;
+    text-align: center;
+    line-height: 0;
+  }
+
+  // Responsive stacking for mobile
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+    > .tags-links {
+      align-items: flex-start;
+      margin-left: 0;
+      margin-top: 0.5em;
+    }
+    .byline,
+    .posted-on {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .content-item {
+        display: none;
+    }
+  }
+}
+
+
+.content-item.lwptoc {
+    border-radius: 15px;
+    border: 1px solid #eee;
+    margin-bottom: 2em;
+    background-color: transparent;
+    font-size: 1.1em;
+    padding: 0;
+    @media (max-width: 1200px) {
+        font-size: 0.9rem;
+    }
+}
+
+.widget.inner-padding.widget_lpwtoc_widget {
+    border-radius: 15px;
+    background-color: colors.$background-color-3;
+    @media (max-width: 900px) {
+        display: none;
+    }
+}
+
+.lwptoc_i {
+    background-color: transparent !important;
+}
+
+.lwptoc_title {
+    font-size: 1.5em;
+    color: colors.$background-color-1;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+// Table of Contents Styling
+.lwptoc_item {
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75em 0; // Add some padding
+    text-decoration: none;
+    color: #333;
+
+    .lwptoc_item_label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-grow: 1;
+      padding-right: 1em; // Space between text and arrow
+      color: colors.$font-color-1;
+      font-weight: bold;
+    }
+
+    &::after {
+      content: '';
+      border: solid colors.$font-color-2; // Arrow color
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 4px; // Arrow size
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      flex-shrink: 0; // Prevent arrow from shrinking
+    }
+  }
+}
+
+.lwptoc_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .lwptoc_title {
+      @media (max-width: 1200px) {
+        font-size: 1.2rem;
+    }
+    }
+    
+}
+
+.lwptoc_toggle {
+  &::before, &::after {
+    display: none;
+  }
+  &_label {
+    margin: 2px -8px;
+  }
+  a {
+    margin: 2px -8px;
+    // Hide the original "show"/"hide" text
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+    position: relative;
+    display: flex;
+    width: 28px;
+    height: 28px;
+
+    // Base styles for the ::before pseudo-element
+    &::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    // Hover effect
+    &:hover::before {
+        border-color: $toc-toggle-contrast-color;
+        background-color: $toc-toggle-contrast-color;
+        color: #fff;
+    }
+}
+}
+
+// State for VISIBLE TOC (link text is "hide"): show minus
+.lwptoc_toggle a[data-label="show"]::before {
+    content: "-";
+    border: 2px solid $toc-toggle-contrast-color;
+    color: $toc-toggle-contrast-color;
+    background-color: transparent;
+    transform: rotate(0deg);
+}
+
+// State for HIDDEN TOC (link text is "show"): show plus
+.lwptoc_toggle a[data-label="hide"]::before {
+    content: "+";
+    border: 2px solid $toc-toggle-contrast-color;
+    color: #fff;
+    background-color: $toc-toggle-contrast-color;
+    transform: rotate(180deg);
+}
+
+/* Legibility guard for single post content area text */
+.single-post .inside-article,
+.single-post .inside-article p,
+.single-post .inside-article li {
+  color: #222;
+}
+
+// Accordion FAQ Styles
+.acordeonFaqPost {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    h2 {
+        text-align: center;
+        font-size: 25px;
+    }
+}
+.acordeonFaqPost .upw-posts article {
+    background-color: #f7f8f9;
+    border: 0.1rem solid colors.$font-color-2;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    padding: 1.5em;
+
+    // --- START: ADD THIS SECTION FOR TRANSITION/VISIBILITY ---
+    .entry-summary {
+        // Ensure content is contained for transition
+        max-height: 1000px; /* Set a large enough max-height for open state */
+        overflow: hidden;
+        // Add transition for smooth open/close
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+        opacity: 1;
+        padding-top: 1em; /* Space between title and content */
+    }
+    // --- END: ADD THIS SECTION ---
+
+    &:last-child {
+        border-bottom: 0.1rem solid colors.$font-color-2!important;
+    }
+
+    .entry-summary:not(:first-child) {
+        margin-top: 0;
+    }
+
+    // Accordion icon and layout
+    // ... (existing styles for .entry-title a)
+.entry-title a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; // Changed to center for better vertical alignment
+        width: 100%;
+        text-decoration: none;
+        color: inherit; // Keep the original text color
+
+        &::after {
+            content: "";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid colors.$font-color-2;
+            background-image:
+              linear-gradient(currentColor, currentColor),
+              linear-gradient(currentColor, currentColor);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 12px 2px, 2px 12px;
+            color: colors.$font-color-2;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            flex-shrink: 0; // Prevent the icon from shrinking
+            margin-left: 1em; // Space between title and icon
+            transform: rotate(0deg);
+        }
+
+        &:hover::after {
+            background-color: colors.$font-color-2;
+            color: #fff;
+        }
+    }
+    // State when the accordion item is open
+    &.open {
+        // Ensure content is visible when open
+        .entry-summary {
+            max-height: max-content;
+            opacity: 1;
+        }
+
+        .entry-title a::after {
+            background-color: colors.$font-color-2;
+            color: #fff;
+            background-size: 12px 2px, 0 0;
+            transform: rotate(0deg);
+        }
+
+        // .entry-title a::after {
+        //     content: "âˆ’";
+        //     background-color: colors.$font-color-2;
+        //     color: #fff;
+        //     transform: rotate(180deg);
+        // }
+    }
+
+    // State when the accordion item is closed
+    &.closed {
+        // --- START: FIX FOR CONTENT VISIBILITY ---
+        .entry-summary {
+            max-height: 0; /* Collapse content */
+            opacity: 0;
+            padding-top: 0; /* Remove top padding when collapsed */
+            padding-bottom: 0; /* Remove bottom padding if present */
+        }
+        // --- END: FIX FOR CONTENT VISIBILITY ---
+        .entry-title a::after {
+            background-color: transparent;
+            color: colors.$font-color-2;
+            background-size: 12px 2px, 2px 12px;
+            transform: rotate(0deg); // Explicitly set rotation for closed state
+        }
+        // .entry-title a::after {
+        //     content: "+";
+        //     background-color: transparent;
+        //     color: colors.$font-color-2;
+        //     transform: rotate(0deg);
+        // }
+    }
+}
+
+// Yoast FAQ block: match the same accordion behavior and style as .acordeonFaqPost.
+.schema-faq.wp-block-yoast-faq-block {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    .schema-faq-section {
+        background-color: #f7f8f9;
+        border: 0.1rem solid colors.$font-color-2;
+        border-radius: 15px;
+        margin-bottom: 2em;
+        padding: 1.5em;
+
+        .schema-faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            cursor: pointer;
+            color: inherit;
+            line-height: 1.4;
+            gap: 1em;
+
+            &::after {
+                content: "";
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                border: 2px solid colors.$font-color-2;
+                background-image:
+                  linear-gradient(currentColor, currentColor),
+                  linear-gradient(currentColor, currentColor);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 12px 2px, 2px 12px;
+                color: colors.$font-color-2;
+                transition: all 0.4s ease;
+                flex-shrink: 0;
+                margin-left: auto;
+                transform: rotate(0deg);
+            }
+
+            &:hover::after {
+                background-color: colors.$font-color-2;
+                color: #fff;
+            }
+        }
+
+        .schema-faq-answer {
+            margin-top: 1em;
+            margin-bottom: 0;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out, margin 0.4s ease-in-out;
+            opacity: 1;
+            padding-top: 0;
+        }
+
+        &.open {
+            .schema-faq-answer {
+                max-height: max-content;
+                opacity: 1;
+                margin-top: 1em;
+            }
+
+            .schema-faq-question::after {
+                background-color: colors.$font-color-2;
+                color: #fff;
+                background-size: 12px 2px, 0 0;
+                transform: rotate(0deg);
+            }
+        }
+
+        // Default closed state for initial load (pre-JS class binding).
+        &:not(.open),
+        &.closed {
+            .schema-faq-answer {
+                max-height: 0;
+                opacity: 0;
+                margin-top: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .schema-faq-question::after {
+                background-color: transparent;
+                color: colors.$font-color-2;
+                background-size: 12px 2px, 2px 12px;
+                transform: rotate(0deg);
+            }
+        }
+    }
+}
+
+
+// // Accordion FAQ Styles
+// .acordeonFaqPost{
+//   padding-top: 5rem;
+//   padding-bottom: 5rem;
+//   h2 {
+//     text-align: center;
+//     font-size: 25px;
+//   }
+// }
+// .acordeonFaqPost .upw-posts article {
+//     background-color: #f7f8f9;
+//     border: 0.1rem solid colors.$font-color-2;
+//     border-radius: 15px;
+//     // border-bottom: none;
+//     margin-bottom: 2em;
+//     padding: 1.5em;
+//     &:last-child {
+//         border-bottom: 0.1rem solid colors.$font-color-2!important;
+//     }
+//     .entry-summary:not(:first-child) {
+//     margin-top: 0;
+//   }
+
+//     // Accordion icon and layout
+//     .entry-title a {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center; // Changed to center for better vertical alignment
+//         width: 100%;
+//         text-decoration: none;
+//         color: inherit; // Keep the original text color
+
+//         &::after {
+//             content: "+";
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             width: 28px;
+//             height: 28px;
+//             border-radius: 50%;
+//             border: 2px solid colors.$font-color-2;
+//             font-size: 24px;
+//             font-weight: bold;
+// line-height: 1;
+// font-family: "Roboto", sans-serif;
+//             color: colors.$font-color-2;
+//             cursor: pointer;
+//             transition: all 0.4s ease;
+//             flex-shrink: 0; // Prevent the icon from shrinking
+//             margin-left: 1em; // Space between title and icon
+//             transform: rotate(0deg);
+//         }
+
+//         &:hover::after {
+//             background-color: colors.$font-color-2;
+//             color: #fff;
+//         }
+//     }
+
+//     // State when the accordion item is open
+//     &.open {
+//         .entry-title a::after {
+//             content: "âˆ’"; // Using a proper minus sign for better alignment
+//             background-color: colors.$font-color-2;
+//             color: #fff;
+//             transform: rotate(0deg);
+//         }
+//     }
+
+//     // State when the accordion item is closed
+//     &.closed {
+//         .entry-title a::after {
+//             content: "+";
+//             background-color: transparent;
+//             color: colors.$font-color-2;
+//             transform: rotate(0deg); // Explicitly set rotation for closed state
+//         }
+//     }
+// }
+
+.post .inside-article .entry-meta {
+  display: none;
+}
+
+// Force right sidebar layout on desktop and stack below content on mobile.
+.single-post {
+  .site-content {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-lg;
+
+    .content-area {
+      order: 1;
+      flex: 1 1 auto;
+      min-width: 0;
+      width: calc(100% - 320px);
+    }
+
+    .widget-area.sidebar.is-right-sidebar {
+      order: 2;
+      flex: 0 0 300px;
+      width: 300px;
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-content {
+      flex-direction: column;
+
+      .content-area,
+      .widget-area.sidebar.is-right-sidebar {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 auto;
+      }
+
+      .widget-area.sidebar.is-right-sidebar {
+        order: 2;
+      }
+    }
+  }
+}
+
+

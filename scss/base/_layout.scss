@@ -1,0 +1,38 @@
+@use "../settings/colors" as colors;
+@use "../settings/vars" as *;
+
+/* ---------------------------------------------
+   Base layout tweaks (GeneratePress child theme)
+---------------------------------------------- */
+
+body.wp-child-theme-ChihldThemeGeneratePress {
+  display: flex;
+  flex-direction: column;
+}
+
+.breadcrumbs {
+  order: 1;
+
+  a,
+  strong {
+    color: colors.$background-color-1;
+  }
+}
+
+header.site-header { order: 0; }
+
+.site {
+  &.container {
+    order: 2;
+    max-width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  &.container,
+  div.inside-article {
+    background-color: colors.$font-color-4;
+  }
+}
+
+.site-footer { order: 3; }

@@ -1,0 +1,13 @@
+@function closest-weight($weight, $allowed: (300, 400, 700)) {
+  $best: null;
+  $bestDiff: null;
+
+  @each $a in $allowed {
+    $diff: abs($a - $weight);
+    @if $best == null or $diff < $bestDiff {
+      $best: $a;
+      $bestDiff: $diff;
+    }
+  }
+  @return $best;
+}

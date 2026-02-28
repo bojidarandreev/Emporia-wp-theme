@@ -1,0 +1,283 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+
+ul#menu-menu-principal[aria-hidden="false"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // background: RGBA(0, 0, 0, 0.01);
+  // background: linear-gradient(180deg,rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.91) 20%, rgba(0, 0, 0, 0.91) 100%);
+  // background: linear-gradient(180deg,rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.91) 20%, rgba(255, 255, 255, 0.91) 100%);
+}
+ul#menu-menu-principal[aria-hidden="false"] li {
+  
+  // a{
+  // }
+}
+.inside-header .main-navigation .menu-item.sfHover > a {
+  color: colors.$nav-menu-accent-color !important;
+  background-color: colors.$gradient-color-1;
+}
+.inside-header .main-navigation .menu-item ul li a {
+    font-size: $h7-size;
+    font-weight: $font-weight-regular;
+    line-height: $space-xsm;
+  }
+//Change parent menu element background when mobile toggled. 
+// .inside-header.grid-container {
+//   background-color: #d42222; // default background
+//   transition: background-color 0.3s ease;
+
+//   // When the child button inside this structure has aria-expanded="true"
+//   &:has(
+//     .main-navigation.mobile-menu-control-wrapper
+//       .menu-toggle[aria-expanded="true"]
+//   ) {
+//     background-color: #e3dddd; // new background when menu is open
+//   }
+// }
+// .header-widget {display: none;}
+
+.inside-header {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media (max-width: 768px){
+    align-items: start;
+  }
+  .mobile-menu-control-wrapper {
+    margin-right: 0;
+    @media (max-width: 290px){
+       margin-right: 0.5rem;
+    }
+  }
+  .site-branding a::before  {
+    @media (max-width: 290px){
+      font-size: 2.35rem;
+    }
+    
+  }
+  // .mobile-menu-control-wrapper {
+  //     @media (max-width: 968px) {
+  //       display: flex;
+  //       flex-wrap: wrap;
+  //       .menu-toggle {
+  //         display: block;
+  //       }
+  //   }
+  // }
+  // .sub-menu-right {
+  //     @media (max-width: 968px) {
+  //       display: none;;
+  //     }
+  //   }
+  
+  .main-navigation {
+    flex-grow: unset;
+    background: transparent;
+    @media (max-width: 768px){
+    top: 5rem;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    }
+    .main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a {
+      color: colors.$font-color-3!important;
+      background-color: colors.$font-color-3;
+    }
+    .menu-item-has-children {
+
+      &:hover {
+        background-color: colors.$font-color-4;
+        border-radius: $border-radius-tiny $border-radius-tiny 0 0; 
+        ul {
+          border-radius: 0 0 $border-radius-tiny $border-radius-tiny;
+        }
+        @media (max-width: 768px){
+          border-radius: 0;
+          border: none;
+          background-color: colors.$font-color-2;
+          ul {
+            border-radius: 0;
+            border: none;
+          }
+        }
+      }
+
+      .sub-menu {
+        li {
+          &:hover {
+            //background-color: transparent; // override default background color
+            border-radius: $border-radius-button $border-radius-button 0 0; 
+          }
+        }
+
+        &:hover {
+          .menu-item-has-children {
+            // background-color: colors.$font-color-4;
+            // border-radius: $border-radius-button $border-radius-button 0 0; 
+          }
+        }
+      }
+    }
+    ul ul {
+      // background-color: colors.$gradient-color-2;
+      background-color: colors.$font-color-2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px;
+      // border-radius: 0 0 $border-radius-button $border-radius-button; // rounded bottom corners
+      width: fit-content; // width equal to longest li child element
+      
+
+      li.menu-item {
+        margin-right: 20px;
+        color: colors.$font-color-4 !important;
+
+        &:hover {
+          color: colors.$font-color-2;
+
+        }
+
+        &:not[class*="current-menu-"] {
+          a {
+            color: colors.$font-color-4;
+          }
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+    }
+    
+    
+    .menu-item a {
+      color: colors.$font-color-4;
+      font-size: $nav-font-size;
+      font-weight: $font-weight-regular;
+      // letter-spacing: calc($space-md - $space-xs);
+      text-decoration: none;
+      @media (max-width: 959px){
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 0;
+        line-height: 29px;
+        padding-bottom: 17px;
+        font-weight: $font-weight-medium;
+      }
+      
+    }
+    .main-nav ul li > a:hover {
+      color: colors.$font-color-4;
+      background-color: colors.$font-color-2;
+    }
+    .main-nav ul li[class*="current-menu-"] > a {
+      color: colors.$font-color-3;
+    }
+    
+  }
+}
+
+// .breadcrumbs {
+
+/* ===== Header/Nav Alignment + Interaction Patch ===== */
+
+/* Normalize desktop menu structure and remove conflicting hover backgrounds */
+.inside-header {
+  align-items: center;
+}
+
+.inside-header .main-navigation .main-nav > ul {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.inside-header .main-navigation .main-nav > ul > li {
+  margin: 0;
+}
+
+.inside-header .main-navigation .main-nav > ul > li > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.15rem;
+  line-height: 1.2;
+  transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Accessibility: ensure sufficient contrast for blog-page top menu links on image header */
+@media (min-width: 769px) {
+  body.single-post .inside-header .main-navigation .main-nav > ul#menu-services-menu > li > a {
+    //background-color: rgba(0, 0, 0, 0.46);
+    padding: 0.4rem 0.55rem;
+    border-radius: 0.5rem;
+  }
+
+  body.single-post .inside-header .main-navigation .main-nav > ul#menu-services-menu > li > a:hover,
+  body.single-post .inside-header .main-navigation .main-nav > ul#menu-services-menu > li > a:focus-visible {
+    //background-color: rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+/* Primary nav link accent state (single tokenized source of truth) */
+.inside-header .main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a,
+.inside-header .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a,
+.inside-header .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a,
+.inside-header .main-navigation .menu-bar-item:hover > a,
+.inside-header .main-navigation .menu-bar-item.sfHover > a,
+.inside-header .main-navigation .main-nav > ul > li:not([class*="current-menu-"]) > a:focus-visible {
+  color: colors.$nav-menu-accent-color !important;
+  background-color: transparent !important;
+}
+
+.inside-header .main-navigation .main-nav > ul > li[class*="current-menu-"] > a {
+  color: colors.$nav-menu-accent-color;
+}
+
+/* Avoid parent LI background flashes causing visual jumps */
+.inside-header .main-navigation .menu-item-has-children:hover {
+  background-color: transparent;
+  border-radius: 0;
+}
+
+/* Keep dropdowns readable and aligned */
+.inside-header .main-navigation ul ul {
+  display: block;
+  width: auto;
+  min-width: 16rem;
+  padding: 0.5rem 0;
+  border-radius: 0.75rem;
+}
+
+.inside-header .main-navigation ul ul li.menu-item {
+  margin-right: 0;
+  color: colors.$font-color-4 !important;
+}
+
+.inside-header .main-navigation ul ul li.menu-item a {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  line-height: 1.35;
+}
+
+.inside-header .main-navigation ul ul li.menu-item:hover {
+  color: colors.$font-color-3;
+  background-color: transparent;
+}
+
+.inside-header .main-navigation .dropdown-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.35rem;
+}
+
+.inside-header .main-navigation a:focus-visible,
+.inside-header .dropdown-menu-toggle:focus-visible {
+  outline: 2px solid colors.$font-color-3;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}

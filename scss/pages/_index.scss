@@ -1,0 +1,11 @@
+@forward "page";
+@forward "post";
+@forward "blog";
+@forward "team";
+@forward "layout-fix";
+
+// These template-specific files define their own local Sass variables.
+// We *use* them to include their CSS, but we do not forward their members
+// to avoid variable name collisions.
+@use "gp-template";
+@use "gemini-template";
