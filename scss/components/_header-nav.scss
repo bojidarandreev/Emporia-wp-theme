@@ -189,6 +189,13 @@ ul#menu-menu-principal[aria-hidden="false"] li {
   align-items: center;
 }
 
+/* Right-align menu items on desktop/tablet — push #primary-menu to the right edge */
+@media (min-width: 769px) {
+  .inside-navigation #primary-menu {
+    margin-left: auto;
+  }
+}
+
 .inside-header .main-navigation .main-nav > ul {
   display: flex;
   align-items: center;
