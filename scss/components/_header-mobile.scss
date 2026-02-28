@@ -195,19 +195,34 @@
 }
 
 @media (max-width: 768px) {
-  .mobile-menu-open .mobile-menu-control-wrapper .menu-toggle::before {
+  // GP adds .mobile-menu-open to <html>, not <body>.
+  // Overlays on body::before/::after (root stacking context, z-index:200)
+  // so they appear above page content but below panel (1001) and toggle (1002).
+  // Click-outside-to-close is handled via JS in accordion.js.
+  html.mobile-menu-open body::before {
+    content: "";
+    background-color: colors.$font-color-2;         // green — matches panel top
+    position: fixed;
     width: var(--mobile-menu-panel-width);
+    height: $mobile-menu-topbar-height;             // 4.8rem header bar
+    top: 0;
     right: 0;
-    left: auto;
+    z-index: 200;                                   // above page, well below panel (1001) and toggle (1002)
   }
 
-  .mobile-menu-open .mobile-menu-control-wrapper .menu-toggle::after {
+  html.mobile-menu-open body::after {
+    content: "";
+    background: rgba(0, 0, 0, 0.3);                // dim scrim — left side of screen
+    position: fixed;
     width: calc(100vw - var(--mobile-menu-panel-width));
+    height: 100vh;
+    top: 0;
     left: 0;
-    right: auto;
+    z-index: 200;                                   // click events handled by JS close handler
   }
 
   .mobile-menu-open .main-navigation.sub-menu-right.toggled .main-nav {
     width: var(--mobile-menu-panel-width);
+    z-index: 1001;                                  // above overlays, below toggle
   }
 }

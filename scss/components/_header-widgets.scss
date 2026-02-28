@@ -87,33 +87,7 @@
 }
   
   .mobile-menu-control-wrapper {
-    .menu-toggle { 
-      // position: fixed;
-      // right: 30px;
-      // top: 45px;
-      // z-index:100;
-      // color: red!important;
-      overflow-y: hidden;
-      &:before {
-        content: "";
-        background-color: colors.$font-color-2;
-        position: fixed;
-        width: $mobile-menu-panel-width;
-        height: $mobile-menu-topbar-height;
-        top: 0;
-        right: 0;
-        z-index: -1;
-      }
-      &:after {
-        content: "";
-        background: RGBA(0, 0, 0, 0.3);
-        position: fixed;
-        width: calc(100vw - #{$mobile-menu-panel-width} - var(--scrollbar-width));
-        height: 100vh;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
+    .menu-toggle {
       .gp-icon {
         &::after {
             content:"";
@@ -129,7 +103,7 @@
           }
       }
     }
-    
+
   }
 }
 
