@@ -38,6 +38,15 @@
   .tnp-widget input {
     border-radius: $border-radius-tiny;
   }
+  // Mobile: force left alignment (GP removes inner-padding on mobile, content can drift)
+  @media (max-width: 768px) {
+    text-align: left;
+    align-items: flex-start;
+    .tnp.tnp-subscription {
+      text-align: left;
+      width: 100%;
+    }
+  }
 }
 
 // Newsletter-END
