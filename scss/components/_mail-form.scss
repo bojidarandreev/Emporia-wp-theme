@@ -1,0 +1,56 @@
+@use "../settings/colors";
+@use "../settings/vars" as *;
+.site .site-content .wpcf7 {
+  p label {
+    font-weight: 300;
+  }
+  .wpcf7-form-control-wrap {
+    input,
+    textarea {
+      border: 0.1rem solid colors.$font-color-5;
+    }
+  }
+  .wpcf7-submit {
+    border-radius: $border-radius-button;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: colors.$font-color-4;
+    background-color: colors.$font-color-2;
+  }
+}
+
+// Newsletter-start
+.widget_newsletterwidget {
+  .tnp-field-button input.tnp-submit {
+    border-radius: $border-radius-button;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    // UC-09: white text, more horizontal padding
+    color: colors.$font-color-4;           // white (was font-color-1 = black)
+    background-color: colors.$font-color-3;
+    width: auto;
+    border: 1px solid colors.$font-color-3;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .tnp-widget input {
+    border-radius: $border-radius-tiny;
+  }
+}
+
+// Newsletter-END
+.wpcf7-form input[type="text"],
+.wpcf7-form input[type="tel"],
+.wpcf7-form input[type="email"],
+.wpcf7-form textarea {
+  border-radius: $border-radius-tiny;
+  width: 100%;
+  padding: 10px;
+}
+
+// .wpcf7-form input[type="submit"] {
+//   border-radius: 10px;
+//   padding: 10px;
+// }
