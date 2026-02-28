@@ -44,11 +44,10 @@
     padding: 0;
   }
 }
- > div {
-    padding-left: 0; 
+ > div:not(.footer-widgets-container) {
+    padding-left: 0;
     padding-right: 0;
     max-width: 1400px;
-
   }
 }
 /* Responsive adjustments - ensure gutters match site-content at smaller sizes */
